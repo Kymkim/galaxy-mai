@@ -1,0 +1,6 @@
+﻿pos_x,pos_y,rotation,side,designator,mpn,pack,footprint,value,mount_type
+40.4813,-64.2937,0.0,top,CH1,,,SW_choc_v1_HS_CPG135001S30_1u,choc_v1_SW_HS,smt
+32.6259,-64.8956,-90.0,top,D1,,,D_DO-35_SOD27_P7.62mm_Horizontal,1N4148,tht
+40.4813,-56.4614,90.0,bottom,J1,,,Pins_1x05_2.54mm_TH,PINHD_1x5_Female,tht
+40.4813,-59.5937,0.0,top,LED1,,,LED_choc_6028R,choc_SK6812MINI-E,smt
+35.4428,-59.5863,90.0,top,R1,,,R_0603,500,smt

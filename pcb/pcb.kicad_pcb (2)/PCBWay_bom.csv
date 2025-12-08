@@ -1,0 +1,6 @@
+﻿Designator,Quantity,Value,Footprint,Package,MPN,DNP,Mount_Type,Description
+CH1,1,choc_v1_SW_HS,SW_choc_v1_HS_CPG135001S30_1u,,,,smt,"Push button switch, normally open, two pins, 45° tilted"
+D1,1,1N4148,D_DO-35_SOD27_P7.62mm_Horizontal,,,,tht,"DO-35 Diode, Small Signal, Fast Switching, 75V, 150mA, 4ns, Alternate KiCad Library"
+J1,1,PINHD_1x5_Female,Pins_1x05_2.54mm_TH,,,,tht,Pin Header female with pin space 2.54mm. Pin Count -5
+LED1,1,choc_SK6812MINI-E,LED_choc_6028R,,,,smt,Reverse mount adressable LED (WS2812 protocol)
+R1,1,500,R_0603,,,,smt,1/4W Resistor

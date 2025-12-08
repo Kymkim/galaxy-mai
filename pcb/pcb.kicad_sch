@@ -1436,7 +1436,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+		(property "Footprint" "PCM_4ms_Resistor:R_0603"
 			(at 109.601 59.182 0)
 			(effects
 				(font
