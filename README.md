@@ -1,5 +1,7 @@
 # galaxy-mai
 
+This project aims to create a AstroDx controller for the Samsung Galaxy Tab
+
 Cooking in progress! Here are some devlogs!
 
 ## 01/01/2026: My 3D printer is back!
