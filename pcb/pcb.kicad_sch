@@ -1026,6 +1026,129 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "PCM_SL_Jumpers_THT:JUP_P5.08mm"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "JP"
+				(at -4.064 1.524 0)
+				(effects
+					(font
+						(size 0.8 0.8)
+					)
+				)
+			)
+			(property "Value" "JUP_P5.08mm"
+				(at 1.27 1.524 0)
+				(effects
+					(font
+						(size 0.8 0.8)
+					)
+				)
+			)
+			(property "Footprint" "PCM_SL_Jumpers:JUP_P5.08mm"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Through-Hole Jumpers or wire links with a pin space of 5.08mm"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "JUP_P5.08mm_0_1"
+				(circle
+					(center -1.27 0)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(arc
+					(start -1.27 0.254)
+					(mid 0 0.5892)
+					(end 1.27 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 1.27 0)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+			)
+			(symbol "JUP_P5.08mm_1_1"
+				(pin passive line
+					(at -2.54 0 0)
+					(length 1.2)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 0 180)
+					(length 1.2)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "PCM_SparkFun-Connector:Conn_01x08_JST_P1.25mm_Locking_Horizontal_SMD"
 			(pin_names
 				(offset 1.016)
@@ -3142,6 +3265,12 @@
 		)
 	)
 	(junction
+		(at 208.28 77.47)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0b140c5a-78c8-4ea2-822e-3434bca77461")
+	)
+	(junction
 		(at 43.18 110.49)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3208,6 +3337,12 @@
 		(uuid "49612bd3-5fc7-4d10-a9e6-ceddb120d7f5")
 	)
 	(junction
+		(at 147.32 77.47)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4a365e0f-adf1-4914-b9ed-340c52e7fbb4")
+	)
+	(junction
 		(at 43.18 128.27)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3232,10 +3367,28 @@
 		(uuid "6541584e-42de-4023-bcf4-64ee282f34e4")
 	)
 	(junction
+		(at 203.2 80.01)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "794f77cd-cc1d-4801-9d5f-405142535bbe")
+	)
+	(junction
 		(at 81.28 64.77)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "7d761e56-f092-47a9-8b4e-88c706962d3e")
+	)
+	(junction
+		(at 60.96 101.6)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7f13e1c9-954e-44fc-9817-20b11f923270")
+	)
+	(junction
+		(at 203.2 107.95)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "812ff33f-0cc0-4016-a756-cc1d61f8583a")
 	)
 	(junction
 		(at 200.66 95.25)
@@ -3268,10 +3421,22 @@
 		(uuid "a3a22624-3bb8-4d87-a3db-4a77787c5e0b")
 	)
 	(junction
+		(at 147.32 69.85)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a6e3a150-4b1f-47c0-9f1f-fcf34a974a06")
+	)
+	(junction
 		(at 50.8 135.89)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c3dda0ce-7115-4c08-a2a1-277562b7e6bf")
+	)
+	(junction
+		(at 219.71 107.95)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c580767d-6b7d-4c2f-afcc-1ac9e918a2df")
 	)
 	(junction
 		(at 148.59 93.98)
@@ -3280,10 +3445,10 @@
 		(uuid "da6d28f1-9b1f-40d6-9d1b-65044b79c117")
 	)
 	(junction
-		(at 60.96 102.87)
+		(at 208.28 107.95)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "dc2fab8f-2c72-4e9c-8d31-22cd815ec5d9")
+		(uuid "e371ef2a-5bf4-4a6d-b4fb-68051445c71e")
 	)
 	(junction
 		(at 48.26 110.49)
@@ -3336,12 +3501,20 @@
 		(uuid "8bd4b1b4-b4d1-4e84-9b94-6dd127eb20a8")
 	)
 	(no_connect
+		(at 198.12 97.79)
+		(uuid "952c9554-df59-4d3c-8d02-578dfd906bce")
+	)
+	(no_connect
 		(at 107.95 99.06)
 		(uuid "960da9d8-16a5-451d-8194-cf8979fb7e9b")
 	)
 	(no_connect
 		(at 138.43 76.2)
 		(uuid "9b3ae3d7-953c-4058-a86e-afb98debe917")
+	)
+	(no_connect
+		(at 198.12 82.55)
+		(uuid "b9d3ed91-4f25-433d-acaf-1f778fecbc4b")
 	)
 	(no_connect
 		(at 138.43 78.74)
@@ -3397,6 +3570,16 @@
 	)
 	(wire
 		(pts
+			(xy 203.2 74.93) (xy 203.2 80.01)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "06163ad0-a1e1-4c48-8f1a-9b492683d00f")
+	)
+	(wire
+		(pts
 			(xy 39.37 125.73) (xy 60.96 125.73)
 		)
 		(stroke
@@ -3407,16 +3590,6 @@
 	)
 	(wire
 		(pts
-			(xy 99.06 111.76) (xy 107.95 111.76)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "072fde6b-140b-4004-a0ae-ddb233683dae")
-	)
-	(wire
-		(pts
 			(xy 99.06 91.44) (xy 107.95 91.44)
 		)
 		(stroke
@@ -3424,6 +3597,16 @@
 			(type default)
 		)
 		(uuid "0872b465-16c2-4afc-8bdd-9419cad76ab9")
+	)
+	(wire
+		(pts
+			(xy 203.2 107.95) (xy 208.28 107.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "08c99035-ef36-46ee-b2cf-0082c74e5881")
 	)
 	(wire
 		(pts
@@ -3477,7 +3660,7 @@
 	)
 	(wire
 		(pts
-			(xy 200.66 95.25) (xy 207.01 95.25)
+			(xy 200.66 95.25) (xy 226.06 95.25)
 		)
 		(stroke
 			(width 0)
@@ -3527,6 +3710,16 @@
 	)
 	(wire
 		(pts
+			(xy 203.2 102.87) (xy 198.12 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "29d37926-52e3-4fba-86f5-46b667e9ed67")
+	)
+	(wire
+		(pts
 			(xy 86.36 104.14) (xy 77.47 104.14)
 		)
 		(stroke
@@ -3534,6 +3727,16 @@
 			(type default)
 		)
 		(uuid "2b75cad5-fa9c-4746-aad1-d2a424ed2fcc")
+	)
+	(wire
+		(pts
+			(xy 203.2 80.01) (xy 203.2 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2e6aaf7f-a3c6-430a-b766-97c1dc437122")
 	)
 	(wire
 		(pts
@@ -3567,6 +3770,16 @@
 	)
 	(wire
 		(pts
+			(xy 160.02 77.47) (xy 147.32 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3910ff37-cc1a-4a59-8868-c231138e3544")
+	)
+	(wire
+		(pts
 			(xy 107.95 69.85) (xy 100.33 69.85)
 		)
 		(stroke
@@ -3574,16 +3787,6 @@
 			(type default)
 		)
 		(uuid "3aeda097-5c0e-4e68-aa09-af4b9076a353")
-	)
-	(wire
-		(pts
-			(xy 60.96 101.6) (xy 60.96 102.87)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3e544b5d-d8ac-477e-9444-6b0ce1300b70")
 	)
 	(wire
 		(pts
@@ -3637,7 +3840,7 @@
 	)
 	(wire
 		(pts
-			(xy 40.64 107.95) (xy 40.64 110.49)
+			(xy 40.64 106.68) (xy 40.64 110.49)
 		)
 		(stroke
 			(width 0)
@@ -3647,13 +3850,23 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 69.85) (xy 144.78 69.85)
+			(xy 147.32 69.85) (xy 160.02 69.85)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "50d69b38-b151-4d80-ae7f-de31cbc0c0b5")
+		(uuid "513797aa-d9fa-44ae-b676-11989d333779")
+	)
+	(wire
+		(pts
+			(xy 160.02 69.85) (xy 160.02 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5274dbbd-2e6b-47e0-80af-f8a90ede3c1b")
 	)
 	(wire
 		(pts
@@ -3674,6 +3887,16 @@
 			(type default)
 		)
 		(uuid "5b53a6c3-7772-4a71-968c-4861ee8d9447")
+	)
+	(wire
+		(pts
+			(xy 198.12 85.09) (xy 208.28 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5dfb271e-a7ce-4054-bc7b-49c4d56eb520")
 	)
 	(wire
 		(pts
@@ -3717,6 +3940,16 @@
 	)
 	(wire
 		(pts
+			(xy 203.2 105.41) (xy 198.12 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6c5002c7-8ba9-42b2-8b96-98879bcd40c3")
+	)
+	(wire
+		(pts
 			(xy 50.8 110.49) (xy 53.34 110.49)
 		)
 		(stroke
@@ -3747,7 +3980,7 @@
 	)
 	(wire
 		(pts
-			(xy 60.96 102.87) (xy 45.72 102.87)
+			(xy 60.96 101.6) (xy 45.72 101.6)
 		)
 		(stroke
 			(width 0)
@@ -3774,6 +4007,26 @@
 			(type default)
 		)
 		(uuid "75402379-df37-4a37-b048-1fbf24300e30")
+	)
+	(wire
+		(pts
+			(xy 99.06 109.22) (xy 107.95 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7b1e99c1-dba3-40ba-ae5a-9b02cd1fa417")
+	)
+	(wire
+		(pts
+			(xy 198.12 100.33) (xy 208.28 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7c6ba905-0453-423b-ac68-03fc99d0256b")
 	)
 	(wire
 		(pts
@@ -3877,6 +4130,36 @@
 	)
 	(wire
 		(pts
+			(xy 198.12 80.01) (xy 203.2 80.01)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a4dd54eb-dc96-4327-8cf8-0f808a84af90")
+	)
+	(wire
+		(pts
+			(xy 99.06 111.76) (xy 107.95 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aa2324e8-2dcd-4988-b009-66d8deddfeef")
+	)
+	(wire
+		(pts
+			(xy 219.71 107.95) (xy 219.71 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b226db85-f6eb-4740-ad94-ccb8f18348ba")
+	)
+	(wire
+		(pts
 			(xy 100.33 38.1) (xy 100.33 36.83)
 		)
 		(stroke
@@ -3884,6 +4167,26 @@
 			(type default)
 		)
 		(uuid "b2b70920-1493-4625-bf3a-9aaa3aa66440")
+	)
+	(wire
+		(pts
+			(xy 219.71 77.47) (xy 219.71 107.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b5780b4a-26f9-486b-b708-95c96e240e44")
+	)
+	(wire
+		(pts
+			(xy 208.28 77.47) (xy 219.71 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b9f3474b-3bc2-4e6c-837d-87bd9a5c98d5")
 	)
 	(wire
 		(pts
@@ -3924,6 +4227,16 @@
 			(type default)
 		)
 		(uuid "bfff53b6-8621-4187-9731-2613691dd3f7")
+	)
+	(wire
+		(pts
+			(xy 138.43 69.85) (xy 147.32 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c0da01d1-b45c-4493-aaa3-f0fa6775067d")
 	)
 	(wire
 		(pts
@@ -3977,7 +4290,7 @@
 	)
 	(wire
 		(pts
-			(xy 199.39 92.71) (xy 207.01 92.71)
+			(xy 199.39 92.71) (xy 226.06 92.71)
 		)
 		(stroke
 			(width 0)
@@ -4047,6 +4360,16 @@
 	)
 	(wire
 		(pts
+			(xy 160.02 76.2) (xy 160.02 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d31fac9b-dfac-42e8-aa39-781ec787f338")
+	)
+	(wire
+		(pts
 			(xy 40.64 110.49) (xy 43.18 110.49)
 		)
 		(stroke
@@ -4097,6 +4420,16 @@
 	)
 	(wire
 		(pts
+			(xy 203.2 105.41) (xy 203.2 107.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "db63ee0d-1ac2-4a43-8b5f-34da638cfb3e")
+	)
+	(wire
+		(pts
 			(xy 87.63 36.83) (xy 100.33 36.83)
 		)
 		(stroke
@@ -4107,7 +4440,7 @@
 	)
 	(wire
 		(pts
-			(xy 60.96 102.87) (xy 60.96 125.73)
+			(xy 60.96 101.6) (xy 60.96 125.73)
 		)
 		(stroke
 			(width 0)
@@ -4177,16 +4510,6 @@
 	)
 	(wire
 		(pts
-			(xy 99.06 109.22) (xy 107.95 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e655f564-25b2-4d84-9634-bc876bc39f39")
-	)
-	(wire
-		(pts
 			(xy 138.43 93.98) (xy 148.59 93.98)
 		)
 		(stroke
@@ -4237,6 +4560,16 @@
 	)
 	(wire
 		(pts
+			(xy 203.2 107.95) (xy 198.12 107.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ed659818-0bf9-447a-84b1-4174326ff2da")
+	)
+	(wire
+		(pts
 			(xy 99.06 81.28) (xy 107.95 81.28)
 		)
 		(stroke
@@ -4244,6 +4577,16 @@
 			(type default)
 		)
 		(uuid "f197d18c-ace9-416a-9e87-e8f77c50f935")
+	)
+	(wire
+		(pts
+			(xy 208.28 107.95) (xy 219.71 107.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f1a03072-4a6c-473b-9783-bb56ff265937")
 	)
 	(wire
 		(pts
@@ -4284,6 +4627,16 @@
 			(type default)
 		)
 		(uuid "f3d1dac3-3779-449a-a0e5-50424a9d491f")
+	)
+	(wire
+		(pts
+			(xy 198.12 77.47) (xy 208.28 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f93bd4a7-bcff-4441-8b31-e0475b29a72f")
 	)
 	(wire
 		(pts
@@ -4395,7 +4748,7 @@
 		)
 		(uuid "4477de15-59df-4089-a18f-0abb790e4f83")
 	)
-	(label "DM"
+	(label "D-"
 		(at 77.47 104.14 0)
 		(effects
 			(font
@@ -4455,7 +4808,7 @@
 		)
 		(uuid "75656eaf-0b3c-4f92-9042-ca3109d80e11")
 	)
-	(label "DP"
+	(label "D+"
 		(at 77.47 106.68 0)
 		(effects
 			(font
@@ -4496,7 +4849,7 @@
 		(uuid "aaf77005-1da9-4856-9e88-5a34d04d8151")
 	)
 	(label "RST"
-		(at 144.78 69.85 180)
+		(at 147.32 69.85 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4515,13 +4868,13 @@
 		)
 		(uuid "af165dea-3626-4ba7-9a00-4bab256c1bc5")
 	)
-	(label "DP"
-		(at 207.01 95.25 0)
+	(label "D+"
+		(at 226.06 95.25 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
 		(uuid "b072a812-acde-4337-ace5-4b92fa5d0747")
 	)
@@ -4535,13 +4888,13 @@
 		)
 		(uuid "d928e267-7364-449f-a80e-2ec57bfa181f")
 	)
-	(label "DM"
-		(at 207.01 92.71 0)
+	(label "D-"
+		(at 226.06 92.71 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
 		(uuid "e98fe2de-c0fa-45de-8844-3d058ead4ca1")
 	)
@@ -4601,7 +4954,7 @@
 				)
 			)
 		)
-		(property "Footprint" "4ms_Package_SOT:SOT223"
+		(property "Footprint" "PCM_4ms_Package_SOT:SOT223"
 			(at 49.53 38.735 0)
 			(effects
 				(font
@@ -4661,6 +5014,75 @@
 			(project ""
 				(path "/17e4f2de-60e4-4cad-8994-c0b05920ade4"
 					(reference "IC1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_Capacitor_AKL:C_0402")
+		(at 147.32 73.66 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0189ffbc-c564-4009-8f6c-4b18e2bc03e8")
+		(property "Reference" "C6"
+			(at 150.876 72.3899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "100uF"
+			(at 150.876 74.9299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "PCM_Capacitor_SMD_Handsoldering_AKL:C_0805_2012Metric"
+			(at 146.3548 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 147.32 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "SMD 0402 MLCC capacitor, Alternate KiCad Library"
+			(at 147.32 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "588f898a-075f-4dba-ab53-599fb997d210")
+		)
+		(pin "2"
+			(uuid "8956cd24-dce7-4a3f-880f-47a11ada438e")
+		)
+		(instances
+			(project "pcb"
+				(path "/17e4f2de-60e4-4cad-8994-c0b05920ade4"
+					(reference "C6")
 					(unit 1)
 				)
 			)
@@ -4974,7 +5396,7 @@
 				)
 			)
 		)
-		(property "Footprint" "PCM_SparkFun-Connector:JST_1x08_P1.25mm_Locking_Horizontal_SMD"
+		(property "Footprint" "PCM_SparkFun-Connector:1x08_P2.54mm"
 			(at 34.29 148.59 0)
 			(effects
 				(font
@@ -5209,7 +5631,7 @@
 				)
 			)
 		)
-		(property "Footprint" "PCM_SparkFun-Connector:JST_1x08_P1.25mm_Locking_Horizontal_SMD"
+		(property "Footprint" "PCM_SparkFun-Connector:1x08_P2.54mm"
 			(at 66.04 148.59 0)
 			(effects
 				(font
@@ -5348,6 +5770,73 @@
 			(project "pcb"
 				(path "/17e4f2de-60e4-4cad-8994-c0b05920ade4"
 					(reference "C2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-PowerSymbol:5V")
+		(at 203.2 74.93 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4ce03f2d-6f0e-4d6d-b252-6c9990bf6659")
+		(property "Reference" "#PWR015"
+			(at 203.2 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "5V"
+			(at 203.2 71.12 0)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 203.2 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 203.2 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"5V\""
+			(at 203.2 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "cf8338d1-6e4a-424b-a5ac-fa739d02e817")
+		)
+		(instances
+			(project "pcb"
+				(path "/17e4f2de-60e4-4cad-8994-c0b05920ade4"
+					(reference "#PWR015")
 					(unit 1)
 				)
 			)
@@ -5630,6 +6119,76 @@
 		)
 	)
 	(symbol
+		(lib_id "PCM_Resistor_US_AKL:R_0805")
+		(at 208.28 104.14 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "62f9b906-eba1-4b5a-8937-a40eb42fbeec")
+		(property "Reference" "R4"
+			(at 210.82 102.8699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "5.1k"
+			(at 210.82 105.4099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "PCM_Resistor_SMD_AKL:R_0805_2012Metric"
+			(at 208.28 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 208.28 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "SMD 0805 Chip Resistor, US Symbol, Alternate KiCad Library"
+			(at 208.28 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6e457e4a-a787-4bf1-9e67-bebf120f9255")
+		)
+		(pin "2"
+			(uuid "bb7ebc0d-5ad1-4147-8be6-409ec2ea07f6")
+		)
+		(instances
+			(project ""
+				(path "/17e4f2de-60e4-4cad-8994-c0b05920ade4"
+					(reference "R4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "PCM_SparkFun-Jumper:SolderJumper_2_Open_No_Silk")
 		(at 45.72 113.03 90)
 		(unit 1)
@@ -5771,8 +6330,8 @@
 	)
 	(symbol
 		(lib_id "PCM_marbastlib-choc:choc_v1_SW_HS_CPG135001S30")
-		(at 43.18 105.41 0)
-		(mirror y)
+		(at 43.18 104.14 0)
+		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5780,7 +6339,7 @@
 		(dnp no)
 		(uuid "66866480-d0e8-4b6a-82a4-2020171492ef")
 		(property "Reference" "CH1"
-			(at 37.846 96.774 0)
+			(at 52.832 107.188 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5788,7 +6347,7 @@
 			)
 		)
 		(property "Value" "choc_v1_SW_HS"
-			(at 37.846 99.314 0)
+			(at 53.086 104.902 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5796,7 +6355,7 @@
 			)
 		)
 		(property "Footprint" "PCM_marbastlib-choc:SW_choc_v1_HS_CPG135001S30_1u"
-			(at 43.18 105.41 0)
+			(at 43.18 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5805,7 +6364,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 43.18 105.41 0)
+			(at 43.18 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5814,7 +6373,7 @@
 			)
 		)
 		(property "Description" "Push button switch, normally open, two pins, 45° tilted"
-			(at 43.18 105.41 0)
+			(at 43.18 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6039,6 +6598,76 @@
 			(project ""
 				(path "/17e4f2de-60e4-4cad-8994-c0b05920ade4"
 					(reference "JMP_BTN1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Jumpers_THT:JUP_P5.08mm")
+		(at 160.02 73.66 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "7bf3dcfe-d716-4c2a-b199-5f96f12f5868")
+		(property "Reference" "JP1"
+			(at 161.29 72.39 90)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "JUP_P5.08mm"
+			(at 161.29 74.93 90)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "PCM_SL_Jumpers:JUP_P5.08mm"
+			(at 160.02 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 160.02 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Through-Hole Jumpers or wire links with a pin space of 5.08mm"
+			(at 160.02 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "8eca5891-d309-4772-adc8-bf4c4c303f10")
+		)
+		(pin "1"
+			(uuid "ffcd39f0-3dbf-4fa6-9604-7e13ed213167")
+		)
+		(instances
+			(project ""
+				(path "/17e4f2de-60e4-4cad-8994-c0b05920ade4"
+					(reference "JP1")
 					(unit 1)
 				)
 			)
@@ -6661,7 +7290,7 @@
 		(fields_autoplaced yes)
 		(uuid "bc72ddaa-2b57-4eec-afb1-1eff5b9cf74c")
 		(property "Reference" "USB1"
-			(at 189.865 71.12 0)
+			(at 189.865 73.66 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -6674,6 +7303,7 @@
 				(font
 					(size 1.524 1.524)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "extern:HRO-TYPE-C-31-M-12-HandSoldering"
@@ -6819,6 +7449,76 @@
 		)
 	)
 	(symbol
+		(lib_id "PCM_Resistor_US_AKL:R_0805")
+		(at 208.28 81.28 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ce911085-fd98-4c2b-9657-321f1daee26a")
+		(property "Reference" "R5"
+			(at 210.82 80.0099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "5.1k"
+			(at 210.82 82.5499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "PCM_Resistor_SMD_AKL:R_0805_2012Metric"
+			(at 208.28 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 208.28 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "SMD 0805 Chip Resistor, US Symbol, Alternate KiCad Library"
+			(at 208.28 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5007d380-aa78-4e45-bccf-4e3fa80b628e")
+		)
+		(pin "2"
+			(uuid "2eae51fa-5fd8-4da5-bd48-a3cfcb6d493a")
+		)
+		(instances
+			(project "pcb"
+				(path "/17e4f2de-60e4-4cad-8994-c0b05920ade4"
+					(reference "R5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "PCM_Capacitor_AKL:C_0402")
 		(at 100.33 33.02 180)
 		(unit 1)
@@ -6954,6 +7654,140 @@
 		)
 	)
 	(symbol
+		(lib_id "PCM_SparkFun-PowerSymbol:GND")
+		(at 147.32 77.47 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e7c260bf-7b33-445f-89b5-3e1d99300c87")
+		(property "Reference" "#PWR013"
+			(at 147.32 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 147.32 81.28 0)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 147.32 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 147.32 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 147.32 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e254860e-8a89-4207-abfa-921eb1eedd85")
+		)
+		(instances
+			(project "pcb"
+				(path "/17e4f2de-60e4-4cad-8994-c0b05920ade4"
+					(reference "#PWR013")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-PowerSymbol:GND")
+		(at 219.71 109.22 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f2284e5d-2baf-4a6c-a150-ceba4ad2ca07")
+		(property "Reference" "#PWR014"
+			(at 219.71 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 219.71 113.03 0)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 219.71 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 219.71 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 219.71 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4f3eca8b-d27e-4b52-86b5-2b2803f26ade")
+		)
+		(instances
+			(project "pcb"
+				(path "/17e4f2de-60e4-4cad-8994-c0b05920ade4"
+					(reference "#PWR014")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "PCM_Resistor_US_AKL:R_0805")
 		(at 148.59 97.79 180)
 		(unit 1)
@@ -6981,7 +7815,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "PCM_4ms_LED:LED_3mm_C1A2_Polarity_Indicator"
+		(property "Footprint" "PCM_Resistor_SMD_AKL:R_0805_2012Metric"
 			(at 148.59 86.36 0)
 			(effects
 				(font
@@ -7048,7 +7882,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "PCM_Package_QFP_AKL:LQFP-36_7x7mm_P0.65mm"
 			(at 123.19 83.82 0)
 			(effects
 				(font
