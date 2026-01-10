@@ -6346,7 +6346,7 @@
 				)
 			)
 		)
-		(property "Value" "choc_v1_SW_HS"
+		(property "Value" "choc_v2_SW_HS"
 			(at 53.086 104.902 0)
 			(effects
 				(font
