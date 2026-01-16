@@ -1,0 +1,13 @@
+﻿Designator,Footprint,Quantity,Value,LCSC Part #
+C1,0805,1,10uF,
+"C2, C4, C5, C6",0805,4,100uF,
+C3,0805,1,100nF,
+CH1,SW_Hotswap_Kailh_Choc_V1V2,1,choc_v2_SW_HS,
+IC1,SOT223,1,LD1117-3.3V-SOT223,
+"JMP_BTN1, JMP_BTN2, JMP_BTN3, JMP_BTN4, JMP_BTN5, JMP_BTN6, JMP_BTN7, JMP_BTN8",Jumper_2_NO_NoSilk,8,~,
+R1,0805,1,10k,
+"R2, R3",0805,2,22,
+"R4, R5",0805,2,5.1k,
+STM32F402K6,LQFP-32_7x7mm_P0.8mm,1,~,
+SW1,SW_PUSH_6mm,1,Push_Button,
+USB1,HRO-TYPE-C-31-M-12-HandSoldering,1,HRO-TYPE-C-31-M-12,

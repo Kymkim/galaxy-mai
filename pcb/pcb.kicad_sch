@@ -4728,6 +4728,16 @@
 		)
 		(uuid "2d26a255-8f18-43f6-9ad1-db0a03a129ed")
 	)
+	(label "SWCLK"
+		(at 107.95 163.83 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "30117aaf-8b69-4b90-80cb-dd734b25c343")
+	)
 	(label "BTN7"
 		(at 55.88 151.13 90)
 		(effects
@@ -4737,16 +4747,6 @@
 			(justify left bottom)
 		)
 		(uuid "349d1bb8-624e-438e-8b1f-68e0d342a6b7")
-	)
-	(label "SWCLK"
-		(at 105.41 163.83 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "4477de15-59df-4089-a18f-0abb790e4f83")
 	)
 	(label "D-"
 		(at 77.47 104.14 0)
@@ -4838,6 +4838,16 @@
 		)
 		(uuid "8e7f490a-8aa1-4cbc-85e2-af16ea105f65")
 	)
+	(label "SWDIO"
+		(at 105.41 163.83 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "94bed637-0849-4d52-8172-14e9b1c2c2c4")
+	)
 	(label "BTN5"
 		(at 50.8 151.13 90)
 		(effects
@@ -4907,16 +4917,6 @@
 			(justify left bottom)
 		)
 		(uuid "ec55a5f7-0249-4276-b758-cbe2fa43c0da")
-	)
-	(label "SWDIO"
-		(at 107.95 163.83 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "f55e1834-d309-48e7-9055-131cdb803f30")
 	)
 	(label "BTN2"
 		(at 99.06 78.74 0)
@@ -5243,7 +5243,7 @@
 				)
 			)
 		)
-		(property "Value" "PinHeader_01x05_P2.54mm_Horizontal_SMD"
+		(property "Value" "DNP"
 			(at 105.41 142.24 90)
 			(effects
 				(font
@@ -5388,7 +5388,7 @@
 				)
 			)
 		)
-		(property "Value" "Input"
+		(property "Value" "DNP"
 			(at 34.29 147.32 0)
 			(effects
 				(font
@@ -5555,7 +5555,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "1uF"
+		(property "Value" "100nF"
 			(at 31.496 49.7839 0)
 			(effects
 				(font
@@ -5623,7 +5623,7 @@
 				)
 			)
 		)
-		(property "Value" "Output"
+		(property "Value" "DNP"
 			(at 66.04 147.32 0)
 			(effects
 				(font
@@ -6354,7 +6354,7 @@
 				)
 			)
 		)
-		(property "Footprint" "PCM_marbastlib-choc:SW_choc_v1_HS_CPG135001S30_1u"
+		(property "Footprint" "PCM_Switch_Keyboard_Hotswap_Kailh:SW_Hotswap_Kailh_Choc_V1V2"
 			(at 43.18 104.14 0)
 			(effects
 				(font
@@ -6622,7 +6622,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "JUP_P5.08mm"
+		(property "Value" "DNP"
 			(at 161.29 74.93 90)
 			(effects
 				(font
@@ -7882,7 +7882,7 @@
 				)
 			)
 		)
-		(property "Footprint" "PCM_Package_QFP_AKL:LQFP-36_7x7mm_P0.65mm"
+		(property "Footprint" "PCM_Package_QFP_AKL:LQFP-32_7x7mm_P0.8mm"
 			(at 123.19 83.82 0)
 			(effects
 				(font
