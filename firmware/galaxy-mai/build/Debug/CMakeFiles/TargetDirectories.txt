@@ -1,0 +1,7 @@
+/home/ukim/Projects/galaxy-mai/firmware/galaxy-mai/build/Debug/CMakeFiles/galaxy-mai.dir
+/home/ukim/Projects/galaxy-mai/firmware/galaxy-mai/build/Debug/CMakeFiles/edit_cache.dir
+/home/ukim/Projects/galaxy-mai/firmware/galaxy-mai/build/Debug/CMakeFiles/rebuild_cache.dir
+/home/ukim/Projects/galaxy-mai/firmware/galaxy-mai/build/Debug/cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir
+/home/ukim/Projects/galaxy-mai/firmware/galaxy-mai/build/Debug/cmake/stm32cubemx/CMakeFiles/USB_Device_Library.dir
+/home/ukim/Projects/galaxy-mai/firmware/galaxy-mai/build/Debug/cmake/stm32cubemx/CMakeFiles/edit_cache.dir
+/home/ukim/Projects/galaxy-mai/firmware/galaxy-mai/build/Debug/cmake/stm32cubemx/CMakeFiles/rebuild_cache.dir
