@@ -1,0 +1,64 @@
+ARM GAS  /tmp/ccBv21Fm.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.arch armv6s-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f0xx_hal_msp.c"
+  14              		.text
+  15              		.section	.text.HAL_MspInit,"ax",%progbits
+  16              		.align	1
+  17              		.global	HAL_MspInit
+  18              		.syntax unified
+  19              		.code	16
+  20              		.thumb_func
+  22              	HAL_MspInit:
+  23              		@ args = 0, pretend = 0, frame = 8
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25              		@ link register save eliminated.
+  26 0000 82B0     		sub	sp, sp, #8
+  27 0002 0A4B     		ldr	r3, .L2
+  28 0004 9969     		ldr	r1, [r3, #24]
+  29 0006 0122     		movs	r2, #1
+  30 0008 1143     		orrs	r1, r2
+  31 000a 9961     		str	r1, [r3, #24]
+  32 000c 9969     		ldr	r1, [r3, #24]
+  33 000e 0A40     		ands	r2, r1
+  34 0010 0092     		str	r2, [sp]
+  35 0012 009A     		ldr	r2, [sp]
+  36 0014 DA69     		ldr	r2, [r3, #28]
+  37 0016 8021     		movs	r1, #128
+  38 0018 4905     		lsls	r1, r1, #21
+  39 001a 0A43     		orrs	r2, r1
+  40 001c DA61     		str	r2, [r3, #28]
+  41 001e DB69     		ldr	r3, [r3, #28]
+  42 0020 0B40     		ands	r3, r1
+  43 0022 0193     		str	r3, [sp, #4]
+  44 0024 019B     		ldr	r3, [sp, #4]
+  45 0026 02B0     		add	sp, sp, #8
+  46              		@ sp needed
+  47 0028 7047     		bx	lr
+  48              	.L3:
+  49 002a C046     		.align	2
+  50              	.L2:
+  51 002c 00100240 		.word	1073876992
+  53              		.ident	"GCC: (Arch Repository) 14.2.0"
+ARM GAS  /tmp/ccBv21Fm.s 			page 2
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f0xx_hal_msp.c
+     /tmp/ccBv21Fm.s:16     .text.HAL_MspInit:00000000 $t
+     /tmp/ccBv21Fm.s:22     .text.HAL_MspInit:00000000 HAL_MspInit
+     /tmp/ccBv21Fm.s:51     .text.HAL_MspInit:0000002c $d
+
+NO UNDEFINED SYMBOLS

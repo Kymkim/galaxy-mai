@@ -1,0 +1,337 @@
+ARM GAS  /tmp/cc5AdqDn.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.arch armv6s-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f0xx_hal_pcd_ex.c"
+  14              		.text
+  15              		.section	.text.HAL_PCDEx_PMAConfig,"ax",%progbits
+  16              		.align	1
+  17              		.global	HAL_PCDEx_PMAConfig
+  18              		.syntax unified
+  19              		.code	16
+  20              		.thumb_func
+  22              	HAL_PCDEx_PMAConfig:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25 0000 10B5     		push	{r4, lr}
+  26 0002 0C06     		lsls	r4, r1, #24
+  27 0004 0CD5     		bpl	.L2
+  28 0006 0724     		movs	r4, #7
+  29 0008 0C40     		ands	r4, r1
+  30 000a A100     		lsls	r1, r4, #2
+  31 000c 0919     		adds	r1, r1, r4
+  32 000e C900     		lsls	r1, r1, #3
+  33 0010 1031     		adds	r1, r1, #16
+  34 0012 4018     		adds	r0, r0, r1
+  35              	.L3:
+  36 0014 002A     		cmp	r2, #0
+  37 0016 0AD1     		bne	.L4
+  38 0018 0273     		strb	r2, [r0, #12]
+  39 001a C380     		strh	r3, [r0, #6]
+  40              	.L5:
+  41 001c 0020     		movs	r0, #0
+  42              		@ sp needed
+  43 001e 10BD     		pop	{r4, pc}
+  44              	.L2:
+  45 0020 8C00     		lsls	r4, r1, #2
+  46 0022 6118     		adds	r1, r4, r1
+  47 0024 C900     		lsls	r1, r1, #3
+  48 0026 5131     		adds	r1, r1, #81
+  49 0028 FF31     		adds	r1, r1, #255
+  50 002a 4018     		adds	r0, r0, r1
+  51 002c F2E7     		b	.L3
+  52              	.L4:
+  53 002e 0122     		movs	r2, #1
+  54 0030 0273     		strb	r2, [r0, #12]
+  55 0032 0381     		strh	r3, [r0, #8]
+  56 0034 1B0C     		lsrs	r3, r3, #16
+  57 0036 4381     		strh	r3, [r0, #10]
+  58 0038 F0E7     		b	.L5
+ARM GAS  /tmp/cc5AdqDn.s 			page 2
+
+
+  60              		.section	.text.HAL_PCDEx_ActivateBCD,"ax",%progbits
+  61              		.align	1
+  62              		.global	HAL_PCDEx_ActivateBCD
+  63              		.syntax unified
+  64              		.code	16
+  65              		.thumb_func
+  67              	HAL_PCDEx_ActivateBCD:
+  68              		@ args = 0, pretend = 0, frame = 0
+  69              		@ frame_needed = 0, uses_anonymous_args = 0
+  70              		@ link register save eliminated.
+  71 0000 0268     		ldr	r2, [r0]
+  72 0002 B523     		movs	r3, #181
+  73 0004 9B00     		lsls	r3, r3, #2
+  74 0006 0121     		movs	r1, #1
+  75 0008 C150     		str	r1, [r0, r3]
+  76 000a 5823     		movs	r3, #88
+  77 000c D15A     		ldrh	r1, [r2, r3]
+  78 000e 0120     		movs	r0, #1
+  79 0010 0143     		orrs	r1, r0
+  80 0012 89B2     		uxth	r1, r1
+  81 0014 D152     		strh	r1, [r2, r3]
+  82 0016 D15A     		ldrh	r1, [r2, r3]
+  83 0018 0420     		movs	r0, #4
+  84 001a 8143     		bics	r1, r0
+  85 001c D152     		strh	r1, [r2, r3]
+  86 001e D15A     		ldrh	r1, [r2, r3]
+  87 0020 0430     		adds	r0, r0, #4
+  88 0022 8143     		bics	r1, r0
+  89 0024 D152     		strh	r1, [r2, r3]
+  90 0026 D15A     		ldrh	r1, [r2, r3]
+  91 0028 0220     		movs	r0, #2
+  92 002a 0143     		orrs	r1, r0
+  93 002c 89B2     		uxth	r1, r1
+  94 002e D152     		strh	r1, [r2, r3]
+  95 0030 0020     		movs	r0, #0
+  96              		@ sp needed
+  97 0032 7047     		bx	lr
+  99              		.section	.text.HAL_PCDEx_DeActivateBCD,"ax",%progbits
+ 100              		.align	1
+ 101              		.global	HAL_PCDEx_DeActivateBCD
+ 102              		.syntax unified
+ 103              		.code	16
+ 104              		.thumb_func
+ 106              	HAL_PCDEx_DeActivateBCD:
+ 107              		@ args = 0, pretend = 0, frame = 0
+ 108              		@ frame_needed = 0, uses_anonymous_args = 0
+ 109              		@ link register save eliminated.
+ 110 0000 0168     		ldr	r1, [r0]
+ 111 0002 B523     		movs	r3, #181
+ 112 0004 9B00     		lsls	r3, r3, #2
+ 113 0006 0022     		movs	r2, #0
+ 114 0008 C250     		str	r2, [r0, r3]
+ 115 000a 5832     		adds	r2, r2, #88
+ 116 000c 8B5A     		ldrh	r3, [r1, r2]
+ 117 000e 0120     		movs	r0, #1
+ 118 0010 8343     		bics	r3, r0
+ 119 0012 8B52     		strh	r3, [r1, r2]
+ARM GAS  /tmp/cc5AdqDn.s 			page 3
+
+
+ 120 0014 0020     		movs	r0, #0
+ 121              		@ sp needed
+ 122 0016 7047     		bx	lr
+ 124              		.section	.text.HAL_PCDEx_ActivateLPM,"ax",%progbits
+ 125              		.align	1
+ 126              		.global	HAL_PCDEx_ActivateLPM
+ 127              		.syntax unified
+ 128              		.code	16
+ 129              		.thumb_func
+ 131              	HAL_PCDEx_ActivateLPM:
+ 132              		@ args = 0, pretend = 0, frame = 0
+ 133              		@ frame_needed = 0, uses_anonymous_args = 0
+ 134              		@ link register save eliminated.
+ 135 0000 0168     		ldr	r1, [r0]
+ 136 0002 B423     		movs	r3, #180
+ 137 0004 9B00     		lsls	r3, r3, #2
+ 138 0006 0122     		movs	r2, #1
+ 139 0008 C250     		str	r2, [r0, r3]
+ 140 000a 083B     		subs	r3, r3, #8
+ 141 000c 0022     		movs	r2, #0
+ 142 000e C254     		strb	r2, [r0, r3]
+ 143 0010 5432     		adds	r2, r2, #84
+ 144 0012 8B5A     		ldrh	r3, [r1, r2]
+ 145 0014 0120     		movs	r0, #1
+ 146 0016 0343     		orrs	r3, r0
+ 147 0018 9BB2     		uxth	r3, r3
+ 148 001a 8B52     		strh	r3, [r1, r2]
+ 149 001c 8B5A     		ldrh	r3, [r1, r2]
+ 150 001e 0220     		movs	r0, #2
+ 151 0020 0343     		orrs	r3, r0
+ 152 0022 9BB2     		uxth	r3, r3
+ 153 0024 8B52     		strh	r3, [r1, r2]
+ 154 0026 0020     		movs	r0, #0
+ 155              		@ sp needed
+ 156 0028 7047     		bx	lr
+ 158              		.section	.text.HAL_PCDEx_DeActivateLPM,"ax",%progbits
+ 159              		.align	1
+ 160              		.global	HAL_PCDEx_DeActivateLPM
+ 161              		.syntax unified
+ 162              		.code	16
+ 163              		.thumb_func
+ 165              	HAL_PCDEx_DeActivateLPM:
+ 166              		@ args = 0, pretend = 0, frame = 0
+ 167              		@ frame_needed = 0, uses_anonymous_args = 0
+ 168              		@ link register save eliminated.
+ 169 0000 0268     		ldr	r2, [r0]
+ 170 0002 B423     		movs	r3, #180
+ 171 0004 9B00     		lsls	r3, r3, #2
+ 172 0006 0021     		movs	r1, #0
+ 173 0008 C150     		str	r1, [r0, r3]
+ 174 000a 5423     		movs	r3, #84
+ 175 000c D15A     		ldrh	r1, [r2, r3]
+ 176 000e 0120     		movs	r0, #1
+ 177 0010 8143     		bics	r1, r0
+ 178 0012 D152     		strh	r1, [r2, r3]
+ 179 0014 D15A     		ldrh	r1, [r2, r3]
+ 180 0016 0130     		adds	r0, r0, #1
+ARM GAS  /tmp/cc5AdqDn.s 			page 4
+
+
+ 181 0018 8143     		bics	r1, r0
+ 182 001a D152     		strh	r1, [r2, r3]
+ 183 001c 0020     		movs	r0, #0
+ 184              		@ sp needed
+ 185 001e 7047     		bx	lr
+ 187              		.section	.text.HAL_PCDEx_LPM_Callback,"ax",%progbits
+ 188              		.align	1
+ 189              		.weak	HAL_PCDEx_LPM_Callback
+ 190              		.syntax unified
+ 191              		.code	16
+ 192              		.thumb_func
+ 194              	HAL_PCDEx_LPM_Callback:
+ 195              		@ args = 0, pretend = 0, frame = 0
+ 196              		@ frame_needed = 0, uses_anonymous_args = 0
+ 197              		@ link register save eliminated.
+ 198              		@ sp needed
+ 199 0000 7047     		bx	lr
+ 201              		.section	.text.HAL_PCDEx_BCD_Callback,"ax",%progbits
+ 202              		.align	1
+ 203              		.weak	HAL_PCDEx_BCD_Callback
+ 204              		.syntax unified
+ 205              		.code	16
+ 206              		.thumb_func
+ 208              	HAL_PCDEx_BCD_Callback:
+ 209              		@ args = 0, pretend = 0, frame = 0
+ 210              		@ frame_needed = 0, uses_anonymous_args = 0
+ 211              		@ link register save eliminated.
+ 212              		@ sp needed
+ 213 0000 7047     		bx	lr
+ 215              		.section	.text.HAL_PCDEx_BCD_VBUSDetect,"ax",%progbits
+ 216              		.align	1
+ 217              		.global	HAL_PCDEx_BCD_VBUSDetect
+ 218              		.syntax unified
+ 219              		.code	16
+ 220              		.thumb_func
+ 222              	HAL_PCDEx_BCD_VBUSDetect:
+ 223              		@ args = 0, pretend = 0, frame = 0
+ 224              		@ frame_needed = 0, uses_anonymous_args = 0
+ 225 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 226 0002 0500     		movs	r5, r0
+ 227 0004 0468     		ldr	r4, [r0]
+ 228 0006 FFF7FEFF 		bl	HAL_GetTick
+ 229 000a 0700     		movs	r7, r0
+ 230 000c 9620     		movs	r0, #150
+ 231 000e 4000     		lsls	r0, r0, #1
+ 232 0010 FFF7FEFF 		bl	HAL_Delay
+ 233 0014 5823     		movs	r3, #88
+ 234 0016 E35A     		ldrh	r3, [r4, r3]
+ 235 0018 DB06     		lsls	r3, r3, #27
+ 236 001a 29D4     		bmi	.L20
+ 237              	.L13:
+ 238 001c 5826     		movs	r6, #88
+ 239 001e A35B     		ldrh	r3, [r4, r6]
+ 240 0020 0222     		movs	r2, #2
+ 241 0022 9343     		bics	r3, r2
+ 242 0024 A353     		strh	r3, [r4, r6]
+ 243 0026 3220     		movs	r0, #50
+ARM GAS  /tmp/cc5AdqDn.s 			page 5
+
+
+ 244 0028 FFF7FEFF 		bl	HAL_Delay
+ 245 002c A35B     		ldrh	r3, [r4, r6]
+ 246 002e 0422     		movs	r2, #4
+ 247 0030 1343     		orrs	r3, r2
+ 248 0032 9BB2     		uxth	r3, r3
+ 249 0034 A353     		strh	r3, [r4, r6]
+ 250 0036 3220     		movs	r0, #50
+ 251 0038 FFF7FEFF 		bl	HAL_Delay
+ 252 003c A35B     		ldrh	r3, [r4, r6]
+ 253 003e 9B06     		lsls	r3, r3, #26
+ 254 0040 20D5     		bpl	.L14
+ 255 0042 A35B     		ldrh	r3, [r4, r6]
+ 256 0044 0422     		movs	r2, #4
+ 257 0046 9343     		bics	r3, r2
+ 258 0048 A353     		strh	r3, [r4, r6]
+ 259 004a 3220     		movs	r0, #50
+ 260 004c FFF7FEFF 		bl	HAL_Delay
+ 261 0050 A35B     		ldrh	r3, [r4, r6]
+ 262 0052 0822     		movs	r2, #8
+ 263 0054 1343     		orrs	r3, r2
+ 264 0056 9BB2     		uxth	r3, r3
+ 265 0058 A353     		strh	r3, [r4, r6]
+ 266 005a 3220     		movs	r0, #50
+ 267 005c FFF7FEFF 		bl	HAL_Delay
+ 268 0060 A35B     		ldrh	r3, [r4, r6]
+ 269 0062 5B06     		lsls	r3, r3, #25
+ 270 0064 09D5     		bpl	.L15
+ 271 0066 FB21     		movs	r1, #251
+ 272 0068 2800     		movs	r0, r5
+ 273 006a FFF7FEFF 		bl	HAL_PCDEx_BCD_Callback
+ 274 006e 0DE0     		b	.L16
+ 275              	.L20:
+ 276 0070 FE21     		movs	r1, #254
+ 277 0072 2800     		movs	r0, r5
+ 278 0074 FFF7FEFF 		bl	HAL_PCDEx_BCD_Callback
+ 279 0078 D0E7     		b	.L13
+ 280              	.L15:
+ 281 007a FC21     		movs	r1, #252
+ 282 007c 2800     		movs	r0, r5
+ 283 007e FFF7FEFF 		bl	HAL_PCDEx_BCD_Callback
+ 284 0082 03E0     		b	.L16
+ 285              	.L14:
+ 286 0084 FD21     		movs	r1, #253
+ 287 0086 2800     		movs	r0, r5
+ 288 0088 FFF7FEFF 		bl	HAL_PCDEx_BCD_Callback
+ 289              	.L16:
+ 290 008c 2800     		movs	r0, r5
+ 291 008e FFF7FEFF 		bl	HAL_PCDEx_DeActivateBCD
+ 292 0092 FFF7FEFF 		bl	HAL_GetTick
+ 293 0096 C01B     		subs	r0, r0, r7
+ 294 0098 FA23     		movs	r3, #250
+ 295 009a 9B00     		lsls	r3, r3, #2
+ 296 009c 9842     		cmp	r0, r3
+ 297 009e 04D9     		bls	.L17
+ 298 00a0 FF21     		movs	r1, #255
+ 299 00a2 2800     		movs	r0, r5
+ 300 00a4 FFF7FEFF 		bl	HAL_PCDEx_BCD_Callback
+ARM GAS  /tmp/cc5AdqDn.s 			page 6
+
+
+ 301              	.L12:
+ 302              		@ sp needed
+ 303 00a8 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 304              	.L17:
+ 305 00aa 0021     		movs	r1, #0
+ 306 00ac 2800     		movs	r0, r5
+ 307 00ae FFF7FEFF 		bl	HAL_PCDEx_BCD_Callback
+ 308 00b2 F9E7     		b	.L12
+ 310              		.ident	"GCC: (Arch Repository) 14.2.0"
+ARM GAS  /tmp/cc5AdqDn.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f0xx_hal_pcd_ex.c
+     /tmp/cc5AdqDn.s:16     .text.HAL_PCDEx_PMAConfig:00000000 $t
+     /tmp/cc5AdqDn.s:22     .text.HAL_PCDEx_PMAConfig:00000000 HAL_PCDEx_PMAConfig
+     /tmp/cc5AdqDn.s:61     .text.HAL_PCDEx_ActivateBCD:00000000 $t
+     /tmp/cc5AdqDn.s:67     .text.HAL_PCDEx_ActivateBCD:00000000 HAL_PCDEx_ActivateBCD
+     /tmp/cc5AdqDn.s:100    .text.HAL_PCDEx_DeActivateBCD:00000000 $t
+     /tmp/cc5AdqDn.s:106    .text.HAL_PCDEx_DeActivateBCD:00000000 HAL_PCDEx_DeActivateBCD
+     /tmp/cc5AdqDn.s:125    .text.HAL_PCDEx_ActivateLPM:00000000 $t
+     /tmp/cc5AdqDn.s:131    .text.HAL_PCDEx_ActivateLPM:00000000 HAL_PCDEx_ActivateLPM
+     /tmp/cc5AdqDn.s:159    .text.HAL_PCDEx_DeActivateLPM:00000000 $t
+     /tmp/cc5AdqDn.s:165    .text.HAL_PCDEx_DeActivateLPM:00000000 HAL_PCDEx_DeActivateLPM
+     /tmp/cc5AdqDn.s:188    .text.HAL_PCDEx_LPM_Callback:00000000 $t
+     /tmp/cc5AdqDn.s:194    .text.HAL_PCDEx_LPM_Callback:00000000 HAL_PCDEx_LPM_Callback
+     /tmp/cc5AdqDn.s:202    .text.HAL_PCDEx_BCD_Callback:00000000 $t
+     /tmp/cc5AdqDn.s:208    .text.HAL_PCDEx_BCD_Callback:00000000 HAL_PCDEx_BCD_Callback
+     /tmp/cc5AdqDn.s:216    .text.HAL_PCDEx_BCD_VBUSDetect:00000000 $t
+     /tmp/cc5AdqDn.s:222    .text.HAL_PCDEx_BCD_VBUSDetect:00000000 HAL_PCDEx_BCD_VBUSDetect
+
+UNDEFINED SYMBOLS
+HAL_GetTick
+HAL_Delay

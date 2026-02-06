@@ -34,10 +34,11 @@ typedef struct {
 } GPIO_PinPortDef;
 
 typedef struct {
-  uint8_t MODIFIER;
-  uint8_t RESERVED;
-  uint8_t KEYPRESS[12];
-} USBHID_ReportDef;
+    uint8_t MODIFIER;       // Modifier keys (Ctrl, Shift, Alt, Win)
+    uint8_t RESERVED;       // Always 0
+    uint8_t KEYPRESS[12];   // Up to 12 keycodes
+} __attribute__((packed)) USBHID_ReportDef;
+
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -51,6 +52,7 @@ typedef struct {
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
+
 /* USER CODE BEGIN PV */
 uint8_t KEYCODE[8] = {0x1A, 0x08, 0x07, 0x06, 0x1B, 0x1D, 0x04, 0x14};
 USBHID_ReportDef REPORT = {0, 0, {0}};
@@ -107,16 +109,17 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-    for(int i = 0; i < 8; i++) {
-      uint8_t pin_state = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0 << i);
-      if(pin_state == GPIO_PIN_SET) {
-        addUSBReport(KEYCODE[i]);
-      }
-    }
-    USBD_HID_SendReport(&hUsbDeviceFS, (uint8_t*)&REPORT, sizeof(REPORT));
+
     /* USER CODE BEGIN 3 */
+'''
+    addUSBReport(0x1A);''
+
+    // Only send i'f''''''''''''''''''''''' USB is ready
+    USBD_HID_SendReport(&hUsbDeviceFS, (uint8_t*)&REPORT, sizeof(REPORT));
+
+    HAL_Delay(10); 
   }
-  /* USER CODE END 3 */
+6  /* USER CODE END 3 */
 }
 
 /**
@@ -163,12 +166,20 @@ void SystemClock_Config(void)
 
 /* USER CODE BEGIN 4 */
 void addUSBReport(uint8_t usageID){
-  if(usageID < 0x04 || usageID > 0x73) return; //Usage ID is out of bounds
-  uint16_t bit_index = usageID - 0x04; //Offset, UsageID starts with 0x04. Gives us the actual value of the bit
-  uint8_t byte_index = bit_index/8;    //Calculates which byte in the REPORT array
-  uint8_t bit_offset = bit_index%8;    //Calculates which bits in the REPORT[byte_index] should be set/unset
-  REPORT.KEYPRESS[byte_index] |= (1 << bit_offset);
+    // Modifier keys (0xE0–0xE7)
+    if (usageID >= 0xE0 && usageID <= 0xE7) {
+        REPORT.KEYPRESS[0] |= (1 << (usageID - 0xE0));
+        return;
+    }
+
+    // Normal keys (0x04–0x63)
+    if (usageID < 0x04 || usageID > 0x63) return;
+    uint16_t bit_index = usageID - 0x04;
+    uint8_t byte_index = 2 + (bit_index / 8); // start at REPORT.KEYPRESS[2]
+    uint8_t bit_offset = bit_index % 8;
+    REPORT.KEYPRESS[byte_index] |= (1 << bit_offset);
 }
+
 /* USER CODE END 4 */
 
 /**

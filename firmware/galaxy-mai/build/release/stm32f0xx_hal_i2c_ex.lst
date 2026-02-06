@@ -1,0 +1,344 @@
+ARM GAS  /tmp/ccGXWRNq.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.arch armv6s-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f0xx_hal_i2c_ex.c"
+  14              		.text
+  15              		.section	.text.HAL_I2CEx_ConfigAnalogFilter,"ax",%progbits
+  16              		.align	1
+  17              		.global	HAL_I2CEx_ConfigAnalogFilter
+  18              		.syntax unified
+  19              		.code	16
+  20              		.thumb_func
+  22              	HAL_I2CEx_ConfigAnalogFilter:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+  26 0002 4123     		movs	r3, #65
+  27 0004 C35C     		ldrb	r3, [r0, r3]
+  28 0006 202B     		cmp	r3, #32
+  29 0008 20D1     		bne	.L3
+  30 000a 2033     		adds	r3, r3, #32
+  31 000c C35C     		ldrb	r3, [r0, r3]
+  32 000e 012B     		cmp	r3, #1
+  33 0010 1ED0     		beq	.L4
+  34 0012 4024     		movs	r4, #64
+  35 0014 0122     		movs	r2, #1
+  36 0016 0255     		strb	r2, [r0, r4]
+  37 0018 4125     		movs	r5, #65
+  38 001a 2423     		movs	r3, #36
+  39 001c 4355     		strb	r3, [r0, r5]
+  40 001e 0668     		ldr	r6, [r0]
+  41 0020 3368     		ldr	r3, [r6]
+  42 0022 9343     		bics	r3, r2
+  43 0024 3360     		str	r3, [r6]
+  44 0026 0668     		ldr	r6, [r0]
+  45 0028 3368     		ldr	r3, [r6]
+  46 002a 0A4F     		ldr	r7, .L5
+  47 002c 3B40     		ands	r3, r7
+  48 002e 3360     		str	r3, [r6]
+  49 0030 0668     		ldr	r6, [r0]
+  50 0032 3368     		ldr	r3, [r6]
+  51 0034 0B43     		orrs	r3, r1
+  52 0036 3360     		str	r3, [r6]
+  53 0038 0168     		ldr	r1, [r0]
+  54 003a 0B68     		ldr	r3, [r1]
+  55 003c 1343     		orrs	r3, r2
+  56 003e 0B60     		str	r3, [r1]
+  57 0040 2023     		movs	r3, #32
+  58 0042 4355     		strb	r3, [r0, r5]
+ARM GAS  /tmp/ccGXWRNq.s 			page 2
+
+
+  59 0044 0023     		movs	r3, #0
+  60 0046 0355     		strb	r3, [r0, r4]
+  61 0048 0020     		movs	r0, #0
+  62              	.L2:
+  63              		@ sp needed
+  64 004a F0BD     		pop	{r4, r5, r6, r7, pc}
+  65              	.L3:
+  66 004c 0220     		movs	r0, #2
+  67 004e FCE7     		b	.L2
+  68              	.L4:
+  69 0050 0220     		movs	r0, #2
+  70 0052 FAE7     		b	.L2
+  71              	.L6:
+  72              		.align	2
+  73              	.L5:
+  74 0054 FFEFFFFF 		.word	-4097
+  76              		.section	.text.HAL_I2CEx_ConfigDigitalFilter,"ax",%progbits
+  77              		.align	1
+  78              		.global	HAL_I2CEx_ConfigDigitalFilter
+  79              		.syntax unified
+  80              		.code	16
+  81              		.thumb_func
+  83              	HAL_I2CEx_ConfigDigitalFilter:
+  84              		@ args = 0, pretend = 0, frame = 0
+  85              		@ frame_needed = 0, uses_anonymous_args = 0
+  86 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+  87 0002 4123     		movs	r3, #65
+  88 0004 C35C     		ldrb	r3, [r0, r3]
+  89 0006 202B     		cmp	r3, #32
+  90 0008 1ED1     		bne	.L9
+  91 000a 2033     		adds	r3, r3, #32
+  92 000c C35C     		ldrb	r3, [r0, r3]
+  93 000e 012B     		cmp	r3, #1
+  94 0010 1CD0     		beq	.L10
+  95 0012 4024     		movs	r4, #64
+  96 0014 0122     		movs	r2, #1
+  97 0016 0255     		strb	r2, [r0, r4]
+  98 0018 4125     		movs	r5, #65
+  99 001a 2423     		movs	r3, #36
+ 100 001c 4355     		strb	r3, [r0, r5]
+ 101 001e 0668     		ldr	r6, [r0]
+ 102 0020 3368     		ldr	r3, [r6]
+ 103 0022 9343     		bics	r3, r2
+ 104 0024 3360     		str	r3, [r6]
+ 105 0026 0668     		ldr	r6, [r0]
+ 106 0028 3368     		ldr	r3, [r6]
+ 107 002a 094F     		ldr	r7, .L11
+ 108 002c 3B40     		ands	r3, r7
+ 109 002e 0902     		lsls	r1, r1, #8
+ 110 0030 1943     		orrs	r1, r3
+ 111 0032 3160     		str	r1, [r6]
+ 112 0034 0168     		ldr	r1, [r0]
+ 113 0036 0B68     		ldr	r3, [r1]
+ 114 0038 1343     		orrs	r3, r2
+ 115 003a 0B60     		str	r3, [r1]
+ 116 003c 2023     		movs	r3, #32
+ 117 003e 4355     		strb	r3, [r0, r5]
+ARM GAS  /tmp/ccGXWRNq.s 			page 3
+
+
+ 118 0040 0023     		movs	r3, #0
+ 119 0042 0355     		strb	r3, [r0, r4]
+ 120 0044 0020     		movs	r0, #0
+ 121              	.L8:
+ 122              		@ sp needed
+ 123 0046 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 124              	.L9:
+ 125 0048 0220     		movs	r0, #2
+ 126 004a FCE7     		b	.L8
+ 127              	.L10:
+ 128 004c 0220     		movs	r0, #2
+ 129 004e FAE7     		b	.L8
+ 130              	.L12:
+ 131              		.align	2
+ 132              	.L11:
+ 133 0050 FFF0FFFF 		.word	-3841
+ 135              		.section	.text.HAL_I2CEx_EnableWakeUp,"ax",%progbits
+ 136              		.align	1
+ 137              		.global	HAL_I2CEx_EnableWakeUp
+ 138              		.syntax unified
+ 139              		.code	16
+ 140              		.thumb_func
+ 142              	HAL_I2CEx_EnableWakeUp:
+ 143              		@ args = 0, pretend = 0, frame = 0
+ 144              		@ frame_needed = 0, uses_anonymous_args = 0
+ 145 0000 70B5     		push	{r4, r5, r6, lr}
+ 146 0002 4123     		movs	r3, #65
+ 147 0004 C35C     		ldrb	r3, [r0, r3]
+ 148 0006 202B     		cmp	r3, #32
+ 149 0008 1DD1     		bne	.L15
+ 150 000a 2033     		adds	r3, r3, #32
+ 151 000c C35C     		ldrb	r3, [r0, r3]
+ 152 000e 012B     		cmp	r3, #1
+ 153 0010 1BD0     		beq	.L16
+ 154 0012 4021     		movs	r1, #64
+ 155 0014 0122     		movs	r2, #1
+ 156 0016 4254     		strb	r2, [r0, r1]
+ 157 0018 4124     		movs	r4, #65
+ 158 001a 2423     		movs	r3, #36
+ 159 001c 0355     		strb	r3, [r0, r4]
+ 160 001e 0568     		ldr	r5, [r0]
+ 161 0020 2B68     		ldr	r3, [r5]
+ 162 0022 9343     		bics	r3, r2
+ 163 0024 2B60     		str	r3, [r5]
+ 164 0026 0568     		ldr	r5, [r0]
+ 165 0028 2E68     		ldr	r6, [r5]
+ 166 002a 8023     		movs	r3, #128
+ 167 002c DB02     		lsls	r3, r3, #11
+ 168 002e 3343     		orrs	r3, r6
+ 169 0030 2B60     		str	r3, [r5]
+ 170 0032 0568     		ldr	r5, [r0]
+ 171 0034 2B68     		ldr	r3, [r5]
+ 172 0036 1343     		orrs	r3, r2
+ 173 0038 2B60     		str	r3, [r5]
+ 174 003a 2023     		movs	r3, #32
+ 175 003c 0355     		strb	r3, [r0, r4]
+ 176 003e 0023     		movs	r3, #0
+ARM GAS  /tmp/ccGXWRNq.s 			page 4
+
+
+ 177 0040 4354     		strb	r3, [r0, r1]
+ 178 0042 0020     		movs	r0, #0
+ 179              	.L14:
+ 180              		@ sp needed
+ 181 0044 70BD     		pop	{r4, r5, r6, pc}
+ 182              	.L15:
+ 183 0046 0220     		movs	r0, #2
+ 184 0048 FCE7     		b	.L14
+ 185              	.L16:
+ 186 004a 0220     		movs	r0, #2
+ 187 004c FAE7     		b	.L14
+ 189              		.section	.text.HAL_I2CEx_DisableWakeUp,"ax",%progbits
+ 190              		.align	1
+ 191              		.global	HAL_I2CEx_DisableWakeUp
+ 192              		.syntax unified
+ 193              		.code	16
+ 194              		.thumb_func
+ 196              	HAL_I2CEx_DisableWakeUp:
+ 197              		@ args = 0, pretend = 0, frame = 0
+ 198              		@ frame_needed = 0, uses_anonymous_args = 0
+ 199 0000 70B5     		push	{r4, r5, r6, lr}
+ 200 0002 4123     		movs	r3, #65
+ 201 0004 C35C     		ldrb	r3, [r0, r3]
+ 202 0006 202B     		cmp	r3, #32
+ 203 0008 1CD1     		bne	.L19
+ 204 000a 2033     		adds	r3, r3, #32
+ 205 000c C35C     		ldrb	r3, [r0, r3]
+ 206 000e 012B     		cmp	r3, #1
+ 207 0010 1AD0     		beq	.L20
+ 208 0012 4021     		movs	r1, #64
+ 209 0014 0122     		movs	r2, #1
+ 210 0016 4254     		strb	r2, [r0, r1]
+ 211 0018 4124     		movs	r4, #65
+ 212 001a 2423     		movs	r3, #36
+ 213 001c 0355     		strb	r3, [r0, r4]
+ 214 001e 0568     		ldr	r5, [r0]
+ 215 0020 2B68     		ldr	r3, [r5]
+ 216 0022 9343     		bics	r3, r2
+ 217 0024 2B60     		str	r3, [r5]
+ 218 0026 0568     		ldr	r5, [r0]
+ 219 0028 2B68     		ldr	r3, [r5]
+ 220 002a 084E     		ldr	r6, .L21
+ 221 002c 3340     		ands	r3, r6
+ 222 002e 2B60     		str	r3, [r5]
+ 223 0030 0568     		ldr	r5, [r0]
+ 224 0032 2B68     		ldr	r3, [r5]
+ 225 0034 1343     		orrs	r3, r2
+ 226 0036 2B60     		str	r3, [r5]
+ 227 0038 2023     		movs	r3, #32
+ 228 003a 0355     		strb	r3, [r0, r4]
+ 229 003c 0023     		movs	r3, #0
+ 230 003e 4354     		strb	r3, [r0, r1]
+ 231 0040 0020     		movs	r0, #0
+ 232              	.L18:
+ 233              		@ sp needed
+ 234 0042 70BD     		pop	{r4, r5, r6, pc}
+ 235              	.L19:
+ARM GAS  /tmp/ccGXWRNq.s 			page 5
+
+
+ 236 0044 0220     		movs	r0, #2
+ 237 0046 FCE7     		b	.L18
+ 238              	.L20:
+ 239 0048 0220     		movs	r0, #2
+ 240 004a FAE7     		b	.L18
+ 241              	.L22:
+ 242              		.align	2
+ 243              	.L21:
+ 244 004c FFFFFBFF 		.word	-262145
+ 246              		.section	.text.HAL_I2CEx_EnableFastModePlus,"ax",%progbits
+ 247              		.align	1
+ 248              		.global	HAL_I2CEx_EnableFastModePlus
+ 249              		.syntax unified
+ 250              		.code	16
+ 251              		.thumb_func
+ 253              	HAL_I2CEx_EnableFastModePlus:
+ 254              		@ args = 0, pretend = 0, frame = 8
+ 255              		@ frame_needed = 0, uses_anonymous_args = 0
+ 256              		@ link register save eliminated.
+ 257 0000 82B0     		sub	sp, sp, #8
+ 258 0002 074A     		ldr	r2, .L24
+ 259 0004 9169     		ldr	r1, [r2, #24]
+ 260 0006 0123     		movs	r3, #1
+ 261 0008 1943     		orrs	r1, r3
+ 262 000a 9161     		str	r1, [r2, #24]
+ 263 000c 9269     		ldr	r2, [r2, #24]
+ 264 000e 1340     		ands	r3, r2
+ 265 0010 0193     		str	r3, [sp, #4]
+ 266 0012 019B     		ldr	r3, [sp, #4]
+ 267 0014 034A     		ldr	r2, .L24+4
+ 268 0016 1368     		ldr	r3, [r2]
+ 269 0018 0343     		orrs	r3, r0
+ 270 001a 1360     		str	r3, [r2]
+ 271 001c 02B0     		add	sp, sp, #8
+ 272              		@ sp needed
+ 273 001e 7047     		bx	lr
+ 274              	.L25:
+ 275              		.align	2
+ 276              	.L24:
+ 277 0020 00100240 		.word	1073876992
+ 278 0024 00000140 		.word	1073807360
+ 280              		.section	.text.HAL_I2CEx_DisableFastModePlus,"ax",%progbits
+ 281              		.align	1
+ 282              		.global	HAL_I2CEx_DisableFastModePlus
+ 283              		.syntax unified
+ 284              		.code	16
+ 285              		.thumb_func
+ 287              	HAL_I2CEx_DisableFastModePlus:
+ 288              		@ args = 0, pretend = 0, frame = 8
+ 289              		@ frame_needed = 0, uses_anonymous_args = 0
+ 290              		@ link register save eliminated.
+ 291 0000 82B0     		sub	sp, sp, #8
+ 292 0002 074A     		ldr	r2, .L27
+ 293 0004 9169     		ldr	r1, [r2, #24]
+ 294 0006 0123     		movs	r3, #1
+ 295 0008 1943     		orrs	r1, r3
+ 296 000a 9161     		str	r1, [r2, #24]
+ARM GAS  /tmp/ccGXWRNq.s 			page 6
+
+
+ 297 000c 9269     		ldr	r2, [r2, #24]
+ 298 000e 1340     		ands	r3, r2
+ 299 0010 0193     		str	r3, [sp, #4]
+ 300 0012 019B     		ldr	r3, [sp, #4]
+ 301 0014 034A     		ldr	r2, .L27+4
+ 302 0016 1368     		ldr	r3, [r2]
+ 303 0018 8343     		bics	r3, r0
+ 304 001a 1360     		str	r3, [r2]
+ 305 001c 02B0     		add	sp, sp, #8
+ 306              		@ sp needed
+ 307 001e 7047     		bx	lr
+ 308              	.L28:
+ 309              		.align	2
+ 310              	.L27:
+ 311 0020 00100240 		.word	1073876992
+ 312 0024 00000140 		.word	1073807360
+ 314              		.ident	"GCC: (Arch Repository) 14.2.0"
+ARM GAS  /tmp/ccGXWRNq.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f0xx_hal_i2c_ex.c
+     /tmp/ccGXWRNq.s:16     .text.HAL_I2CEx_ConfigAnalogFilter:00000000 $t
+     /tmp/ccGXWRNq.s:22     .text.HAL_I2CEx_ConfigAnalogFilter:00000000 HAL_I2CEx_ConfigAnalogFilter
+     /tmp/ccGXWRNq.s:74     .text.HAL_I2CEx_ConfigAnalogFilter:00000054 $d
+     /tmp/ccGXWRNq.s:77     .text.HAL_I2CEx_ConfigDigitalFilter:00000000 $t
+     /tmp/ccGXWRNq.s:83     .text.HAL_I2CEx_ConfigDigitalFilter:00000000 HAL_I2CEx_ConfigDigitalFilter
+     /tmp/ccGXWRNq.s:133    .text.HAL_I2CEx_ConfigDigitalFilter:00000050 $d
+     /tmp/ccGXWRNq.s:136    .text.HAL_I2CEx_EnableWakeUp:00000000 $t
+     /tmp/ccGXWRNq.s:142    .text.HAL_I2CEx_EnableWakeUp:00000000 HAL_I2CEx_EnableWakeUp
+     /tmp/ccGXWRNq.s:190    .text.HAL_I2CEx_DisableWakeUp:00000000 $t
+     /tmp/ccGXWRNq.s:196    .text.HAL_I2CEx_DisableWakeUp:00000000 HAL_I2CEx_DisableWakeUp
+     /tmp/ccGXWRNq.s:244    .text.HAL_I2CEx_DisableWakeUp:0000004c $d
+     /tmp/ccGXWRNq.s:247    .text.HAL_I2CEx_EnableFastModePlus:00000000 $t
+     /tmp/ccGXWRNq.s:253    .text.HAL_I2CEx_EnableFastModePlus:00000000 HAL_I2CEx_EnableFastModePlus
+     /tmp/ccGXWRNq.s:277    .text.HAL_I2CEx_EnableFastModePlus:00000020 $d
+     /tmp/ccGXWRNq.s:281    .text.HAL_I2CEx_DisableFastModePlus:00000000 $t
+     /tmp/ccGXWRNq.s:287    .text.HAL_I2CEx_DisableFastModePlus:00000000 HAL_I2CEx_DisableFastModePlus
+     /tmp/ccGXWRNq.s:311    .text.HAL_I2CEx_DisableFastModePlus:00000020 $d
+
+NO UNDEFINED SYMBOLS

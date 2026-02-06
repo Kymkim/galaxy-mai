@@ -1,0 +1,829 @@
+ARM GAS  /tmp/cc1xhpla.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.arch armv6s-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f0xx_hal_flash_ex.c"
+  14              		.text
+  15              		.section	.text.FLASH_MassErase,"ax",%progbits
+  16              		.align	1
+  17              		.syntax unified
+  18              		.code	16
+  19              		.thumb_func
+  21              	FLASH_MassErase:
+  22              		@ args = 0, pretend = 0, frame = 0
+  23              		@ frame_needed = 0, uses_anonymous_args = 0
+  24              		@ link register save eliminated.
+  25 0000 064B     		ldr	r3, .L2
+  26 0002 0022     		movs	r2, #0
+  27 0004 DA61     		str	r2, [r3, #28]
+  28 0006 064B     		ldr	r3, .L2+4
+  29 0008 1A69     		ldr	r2, [r3, #16]
+  30 000a 0421     		movs	r1, #4
+  31 000c 0A43     		orrs	r2, r1
+  32 000e 1A61     		str	r2, [r3, #16]
+  33 0010 1A69     		ldr	r2, [r3, #16]
+  34 0012 3C31     		adds	r1, r1, #60
+  35 0014 0A43     		orrs	r2, r1
+  36 0016 1A61     		str	r2, [r3, #16]
+  37              		@ sp needed
+  38 0018 7047     		bx	lr
+  39              	.L3:
+  40 001a C046     		.align	2
+  41              	.L2:
+  42 001c 00000000 		.word	pFlash
+  43 0020 00200240 		.word	1073881088
+  45              		.section	.text.FLASH_OB_GetWRP,"ax",%progbits
+  46              		.align	1
+  47              		.syntax unified
+  48              		.code	16
+  49              		.thumb_func
+  51              	FLASH_OB_GetWRP:
+  52              		@ args = 0, pretend = 0, frame = 0
+  53              		@ frame_needed = 0, uses_anonymous_args = 0
+  54              		@ link register save eliminated.
+  55 0000 014B     		ldr	r3, .L5
+  56 0002 186A     		ldr	r0, [r3, #32]
+  57              		@ sp needed
+  58 0004 7047     		bx	lr
+  59              	.L6:
+  60 0006 C046     		.align	2
+ARM GAS  /tmp/cc1xhpla.s 			page 2
+
+
+  61              	.L5:
+  62 0008 00200240 		.word	1073881088
+  64              		.section	.text.FLASH_OB_GetRDP,"ax",%progbits
+  65              		.align	1
+  66              		.syntax unified
+  67              		.code	16
+  68              		.thumb_func
+  70              	FLASH_OB_GetRDP:
+  71              		@ args = 0, pretend = 0, frame = 0
+  72              		@ frame_needed = 0, uses_anonymous_args = 0
+  73              		@ link register save eliminated.
+  74 0000 064B     		ldr	r3, .L11
+  75 0002 DB69     		ldr	r3, [r3, #28]
+  76 0004 0622     		movs	r2, #6
+  77 0006 1A42     		tst	r2, r3
+  78 0008 03D0     		beq	.L9
+  79 000a 5B07     		lsls	r3, r3, #29
+  80 000c 03D5     		bpl	.L10
+  81 000e CC20     		movs	r0, #204
+  82 0010 00E0     		b	.L7
+  83              	.L9:
+  84 0012 AA20     		movs	r0, #170
+  85              	.L7:
+  86              		@ sp needed
+  87 0014 7047     		bx	lr
+  88              	.L10:
+  89 0016 BB20     		movs	r0, #187
+  90 0018 FCE7     		b	.L7
+  91              	.L12:
+  92 001a C046     		.align	2
+  93              	.L11:
+  94 001c 00200240 		.word	1073881088
+  96              		.section	.text.FLASH_OB_GetUser,"ax",%progbits
+  97              		.align	1
+  98              		.syntax unified
+  99              		.code	16
+ 100              		.thumb_func
+ 102              	FLASH_OB_GetUser:
+ 103              		@ args = 0, pretend = 0, frame = 0
+ 104              		@ frame_needed = 0, uses_anonymous_args = 0
+ 105              		@ link register save eliminated.
+ 106 0000 024B     		ldr	r3, .L14
+ 107 0002 D869     		ldr	r0, [r3, #28]
+ 108 0004 000A     		lsrs	r0, r0, #8
+ 109 0006 C0B2     		uxtb	r0, r0
+ 110              		@ sp needed
+ 111 0008 7047     		bx	lr
+ 112              	.L15:
+ 113 000a C046     		.align	2
+ 114              	.L14:
+ 115 000c 00200240 		.word	1073881088
+ 117              		.section	.text.FLASH_OB_RDP_LevelConfig,"ax",%progbits
+ 118              		.align	1
+ 119              		.syntax unified
+ 120              		.code	16
+ 121              		.thumb_func
+ 123              	FLASH_OB_RDP_LevelConfig:
+ARM GAS  /tmp/cc1xhpla.s 			page 3
+
+
+ 124              		@ args = 0, pretend = 0, frame = 0
+ 125              		@ frame_needed = 0, uses_anonymous_args = 0
+ 126 0000 70B5     		push	{r4, r5, r6, lr}
+ 127 0002 0400     		movs	r4, r0
+ 128 0004 1348     		ldr	r0, .L19
+ 129 0006 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 130 000a 0028     		cmp	r0, #0
+ 131 000c 00D0     		beq	.L18
+ 132              	.L17:
+ 133              		@ sp needed
+ 134 000e 70BD     		pop	{r4, r5, r6, pc}
+ 135              	.L18:
+ 136 0010 114B     		ldr	r3, .L19+4
+ 137 0012 0022     		movs	r2, #0
+ 138 0014 DA61     		str	r2, [r3, #28]
+ 139 0016 114D     		ldr	r5, .L19+8
+ 140 0018 2B69     		ldr	r3, [r5, #16]
+ 141 001a 2026     		movs	r6, #32
+ 142 001c 3343     		orrs	r3, r6
+ 143 001e 2B61     		str	r3, [r5, #16]
+ 144 0020 2B69     		ldr	r3, [r5, #16]
+ 145 0022 4032     		adds	r2, r2, #64
+ 146 0024 1343     		orrs	r3, r2
+ 147 0026 2B61     		str	r3, [r5, #16]
+ 148 0028 0A48     		ldr	r0, .L19
+ 149 002a FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 150 002e 2B69     		ldr	r3, [r5, #16]
+ 151 0030 B343     		bics	r3, r6
+ 152 0032 2B61     		str	r3, [r5, #16]
+ 153 0034 0028     		cmp	r0, #0
+ 154 0036 EAD1     		bne	.L17
+ 155 0038 2B69     		ldr	r3, [r5, #16]
+ 156 003a 103E     		subs	r6, r6, #16
+ 157 003c 3343     		orrs	r3, r6
+ 158 003e 2B61     		str	r3, [r5, #16]
+ 159 0040 074B     		ldr	r3, .L19+12
+ 160 0042 1C80     		strh	r4, [r3]
+ 161 0044 0348     		ldr	r0, .L19
+ 162 0046 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 163 004a 2B69     		ldr	r3, [r5, #16]
+ 164 004c B343     		bics	r3, r6
+ 165 004e 2B61     		str	r3, [r5, #16]
+ 166 0050 DDE7     		b	.L17
+ 167              	.L20:
+ 168 0052 C046     		.align	2
+ 169              	.L19:
+ 170 0054 50C30000 		.word	50000
+ 171 0058 00000000 		.word	pFlash
+ 172 005c 00200240 		.word	1073881088
+ 173 0060 00F8FF1F 		.word	536868864
+ 175              		.section	.text.FLASH_OB_UserConfig,"ax",%progbits
+ 176              		.align	1
+ 177              		.syntax unified
+ 178              		.code	16
+ 179              		.thumb_func
+ 181              	FLASH_OB_UserConfig:
+ 182              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /tmp/cc1xhpla.s 			page 4
+
+
+ 183              		@ frame_needed = 0, uses_anonymous_args = 0
+ 184 0000 70B5     		push	{r4, r5, r6, lr}
+ 185 0002 0400     		movs	r4, r0
+ 186 0004 0B48     		ldr	r0, .L24
+ 187 0006 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 188 000a 0028     		cmp	r0, #0
+ 189 000c 00D0     		beq	.L23
+ 190              	.L22:
+ 191              		@ sp needed
+ 192 000e 70BD     		pop	{r4, r5, r6, pc}
+ 193              	.L23:
+ 194 0010 094B     		ldr	r3, .L24+4
+ 195 0012 0022     		movs	r2, #0
+ 196 0014 DA61     		str	r2, [r3, #28]
+ 197 0016 094D     		ldr	r5, .L24+8
+ 198 0018 2B69     		ldr	r3, [r5, #16]
+ 199 001a 1026     		movs	r6, #16
+ 200 001c 3343     		orrs	r3, r6
+ 201 001e 2B61     		str	r3, [r5, #16]
+ 202 0020 074B     		ldr	r3, .L24+12
+ 203 0022 5C80     		strh	r4, [r3, #2]
+ 204 0024 0348     		ldr	r0, .L24
+ 205 0026 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 206 002a 2B69     		ldr	r3, [r5, #16]
+ 207 002c B343     		bics	r3, r6
+ 208 002e 2B61     		str	r3, [r5, #16]
+ 209 0030 EDE7     		b	.L22
+ 210              	.L25:
+ 211 0032 C046     		.align	2
+ 212              	.L24:
+ 213 0034 50C30000 		.word	50000
+ 214 0038 00000000 		.word	pFlash
+ 215 003c 00200240 		.word	1073881088
+ 216 0040 00F8FF1F 		.word	536868864
+ 218              		.section	.text.FLASH_OB_ProgramData,"ax",%progbits
+ 219              		.align	1
+ 220              		.syntax unified
+ 221              		.code	16
+ 222              		.thumb_func
+ 224              	FLASH_OB_ProgramData:
+ 225              		@ args = 0, pretend = 0, frame = 0
+ 226              		@ frame_needed = 0, uses_anonymous_args = 0
+ 227 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 228 0002 0400     		movs	r4, r0
+ 229 0004 0D00     		movs	r5, r1
+ 230 0006 0B48     		ldr	r0, .L29
+ 231 0008 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 232 000c 0028     		cmp	r0, #0
+ 233 000e 00D0     		beq	.L28
+ 234              	.L27:
+ 235              		@ sp needed
+ 236 0010 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 237              	.L28:
+ 238 0012 094B     		ldr	r3, .L29+4
+ 239 0014 0022     		movs	r2, #0
+ 240 0016 DA61     		str	r2, [r3, #28]
+ 241 0018 084E     		ldr	r6, .L29+8
+ARM GAS  /tmp/cc1xhpla.s 			page 5
+
+
+ 242 001a 3369     		ldr	r3, [r6, #16]
+ 243 001c 1027     		movs	r7, #16
+ 244 001e 3B43     		orrs	r3, r7
+ 245 0020 3361     		str	r3, [r6, #16]
+ 246 0022 2580     		strh	r5, [r4]
+ 247 0024 0348     		ldr	r0, .L29
+ 248 0026 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 249 002a 3369     		ldr	r3, [r6, #16]
+ 250 002c BB43     		bics	r3, r7
+ 251 002e 3361     		str	r3, [r6, #16]
+ 252 0030 EEE7     		b	.L27
+ 253              	.L30:
+ 254 0032 C046     		.align	2
+ 255              	.L29:
+ 256 0034 50C30000 		.word	50000
+ 257 0038 00000000 		.word	pFlash
+ 258 003c 00200240 		.word	1073881088
+ 260              		.section	.text.HAL_FLASHEx_OBErase,"ax",%progbits
+ 261              		.align	1
+ 262              		.global	HAL_FLASHEx_OBErase
+ 263              		.syntax unified
+ 264              		.code	16
+ 265              		.thumb_func
+ 267              	HAL_FLASHEx_OBErase:
+ 268              		@ args = 0, pretend = 0, frame = 0
+ 269              		@ frame_needed = 0, uses_anonymous_args = 0
+ 270 0000 70B5     		push	{r4, r5, r6, lr}
+ 271 0002 FFF7FEFF 		bl	FLASH_OB_GetRDP
+ 272 0006 C5B2     		uxtb	r5, r0
+ 273 0008 0E48     		ldr	r0, .L34
+ 274 000a FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 275 000e 0028     		cmp	r0, #0
+ 276 0010 00D0     		beq	.L33
+ 277              	.L32:
+ 278              		@ sp needed
+ 279 0012 70BD     		pop	{r4, r5, r6, pc}
+ 280              	.L33:
+ 281 0014 0C4B     		ldr	r3, .L34+4
+ 282 0016 0022     		movs	r2, #0
+ 283 0018 DA61     		str	r2, [r3, #28]
+ 284 001a 0C4C     		ldr	r4, .L34+8
+ 285 001c 2369     		ldr	r3, [r4, #16]
+ 286 001e 2026     		movs	r6, #32
+ 287 0020 3343     		orrs	r3, r6
+ 288 0022 2361     		str	r3, [r4, #16]
+ 289 0024 2369     		ldr	r3, [r4, #16]
+ 290 0026 4032     		adds	r2, r2, #64
+ 291 0028 1343     		orrs	r3, r2
+ 292 002a 2361     		str	r3, [r4, #16]
+ 293 002c 0548     		ldr	r0, .L34
+ 294 002e FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 295 0032 2369     		ldr	r3, [r4, #16]
+ 296 0034 B343     		bics	r3, r6
+ 297 0036 2361     		str	r3, [r4, #16]
+ 298 0038 0028     		cmp	r0, #0
+ 299 003a EAD1     		bne	.L32
+ 300 003c 2800     		movs	r0, r5
+ARM GAS  /tmp/cc1xhpla.s 			page 6
+
+
+ 301 003e FFF7FEFF 		bl	FLASH_OB_RDP_LevelConfig
+ 302 0042 E6E7     		b	.L32
+ 303              	.L35:
+ 304              		.align	2
+ 305              	.L34:
+ 306 0044 50C30000 		.word	50000
+ 307 0048 00000000 		.word	pFlash
+ 308 004c 00200240 		.word	1073881088
+ 310              		.section	.text.FLASH_OB_EnableWRP,"ax",%progbits
+ 311              		.align	1
+ 312              		.syntax unified
+ 313              		.code	16
+ 314              		.thumb_func
+ 316              	FLASH_OB_EnableWRP:
+ 317              		@ args = 0, pretend = 0, frame = 0
+ 318              		@ frame_needed = 0, uses_anonymous_args = 0
+ 319 0000 10B5     		push	{r4, lr}
+ 320 0002 0400     		movs	r4, r0
+ 321 0004 FFF7FEFF 		bl	FLASH_OB_GetWRP
+ 322 0008 A043     		bics	r0, r4
+ 323 000a FF24     		movs	r4, #255
+ 324 000c 0440     		ands	r4, r0
+ 325 000e 1148     		ldr	r0, .L41
+ 326 0010 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 327 0014 0028     		cmp	r0, #0
+ 328 0016 00D0     		beq	.L39
+ 329              	.L37:
+ 330              		@ sp needed
+ 331 0018 10BD     		pop	{r4, pc}
+ 332              	.L39:
+ 333 001a 0F4B     		ldr	r3, .L41+4
+ 334 001c 0022     		movs	r2, #0
+ 335 001e DA61     		str	r2, [r3, #28]
+ 336 0020 FFF7FEFF 		bl	HAL_FLASHEx_OBErase
+ 337 0024 0028     		cmp	r0, #0
+ 338 0026 F7D1     		bne	.L37
+ 339 0028 0C4A     		ldr	r2, .L41+8
+ 340 002a 1369     		ldr	r3, [r2, #16]
+ 341 002c 1021     		movs	r1, #16
+ 342 002e 0B43     		orrs	r3, r1
+ 343 0030 1361     		str	r3, [r2, #16]
+ 344 0032 FF2C     		cmp	r4, #255
+ 345 0034 05D1     		bne	.L40
+ 346              	.L38:
+ 347 0036 094A     		ldr	r2, .L41+8
+ 348 0038 1369     		ldr	r3, [r2, #16]
+ 349 003a 1021     		movs	r1, #16
+ 350 003c 8B43     		bics	r3, r1
+ 351 003e 1361     		str	r3, [r2, #16]
+ 352 0040 EAE7     		b	.L37
+ 353              	.L40:
+ 354 0042 074A     		ldr	r2, .L41+12
+ 355 0044 1389     		ldrh	r3, [r2, #8]
+ 356 0046 2340     		ands	r3, r4
+ 357 0048 1381     		strh	r3, [r2, #8]
+ 358 004a 0248     		ldr	r0, .L41
+ 359 004c FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ARM GAS  /tmp/cc1xhpla.s 			page 7
+
+
+ 360 0050 F1E7     		b	.L38
+ 361              	.L42:
+ 362 0052 C046     		.align	2
+ 363              	.L41:
+ 364 0054 50C30000 		.word	50000
+ 365 0058 00000000 		.word	pFlash
+ 366 005c 00200240 		.word	1073881088
+ 367 0060 00F8FF1F 		.word	536868864
+ 369              		.section	.text.FLASH_OB_DisableWRP,"ax",%progbits
+ 370              		.align	1
+ 371              		.syntax unified
+ 372              		.code	16
+ 373              		.thumb_func
+ 375              	FLASH_OB_DisableWRP:
+ 376              		@ args = 0, pretend = 0, frame = 0
+ 377              		@ frame_needed = 0, uses_anonymous_args = 0
+ 378 0000 10B5     		push	{r4, lr}
+ 379 0002 0400     		movs	r4, r0
+ 380 0004 FFF7FEFF 		bl	FLASH_OB_GetWRP
+ 381 0008 2043     		orrs	r0, r4
+ 382 000a FF24     		movs	r4, #255
+ 383 000c 0440     		ands	r4, r0
+ 384 000e 1148     		ldr	r0, .L48
+ 385 0010 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 386 0014 0028     		cmp	r0, #0
+ 387 0016 00D0     		beq	.L46
+ 388              	.L44:
+ 389              		@ sp needed
+ 390 0018 10BD     		pop	{r4, pc}
+ 391              	.L46:
+ 392 001a 0F4B     		ldr	r3, .L48+4
+ 393 001c 0022     		movs	r2, #0
+ 394 001e DA61     		str	r2, [r3, #28]
+ 395 0020 FFF7FEFF 		bl	HAL_FLASHEx_OBErase
+ 396 0024 0028     		cmp	r0, #0
+ 397 0026 F7D1     		bne	.L44
+ 398 0028 0C4A     		ldr	r2, .L48+8
+ 399 002a 1369     		ldr	r3, [r2, #16]
+ 400 002c 1021     		movs	r1, #16
+ 401 002e 0B43     		orrs	r3, r1
+ 402 0030 1361     		str	r3, [r2, #16]
+ 403 0032 FF2C     		cmp	r4, #255
+ 404 0034 05D1     		bne	.L47
+ 405              	.L45:
+ 406 0036 094A     		ldr	r2, .L48+8
+ 407 0038 1369     		ldr	r3, [r2, #16]
+ 408 003a 1021     		movs	r1, #16
+ 409 003c 8B43     		bics	r3, r1
+ 410 003e 1361     		str	r3, [r2, #16]
+ 411 0040 EAE7     		b	.L44
+ 412              	.L47:
+ 413 0042 074A     		ldr	r2, .L48+12
+ 414 0044 1389     		ldrh	r3, [r2, #8]
+ 415 0046 2340     		ands	r3, r4
+ 416 0048 1381     		strh	r3, [r2, #8]
+ 417 004a 0248     		ldr	r0, .L48
+ 418 004c FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ARM GAS  /tmp/cc1xhpla.s 			page 8
+
+
+ 419 0050 F1E7     		b	.L45
+ 420              	.L49:
+ 421 0052 C046     		.align	2
+ 422              	.L48:
+ 423 0054 50C30000 		.word	50000
+ 424 0058 00000000 		.word	pFlash
+ 425 005c 00200240 		.word	1073881088
+ 426 0060 00F8FF1F 		.word	536868864
+ 428              		.section	.text.HAL_FLASHEx_OBProgram,"ax",%progbits
+ 429              		.align	1
+ 430              		.global	HAL_FLASHEx_OBProgram
+ 431              		.syntax unified
+ 432              		.code	16
+ 433              		.thumb_func
+ 435              	HAL_FLASHEx_OBProgram:
+ 436              		@ args = 0, pretend = 0, frame = 0
+ 437              		@ frame_needed = 0, uses_anonymous_args = 0
+ 438 0000 10B5     		push	{r4, lr}
+ 439 0002 0400     		movs	r4, r0
+ 440 0004 224B     		ldr	r3, .L67
+ 441 0006 1B7E     		ldrb	r3, [r3, #24]
+ 442 0008 012B     		cmp	r3, #1
+ 443 000a 3FD0     		beq	.L58
+ 444 000c 204B     		ldr	r3, .L67
+ 445 000e 0122     		movs	r2, #1
+ 446 0010 1A76     		strb	r2, [r3, #24]
+ 447 0012 0368     		ldr	r3, [r0]
+ 448 0014 1A42     		tst	r2, r3
+ 449 0016 0FD0     		beq	.L59
+ 450 0018 4368     		ldr	r3, [r0, #4]
+ 451 001a 012B     		cmp	r3, #1
+ 452 001c 08D0     		beq	.L63
+ 453 001e 8068     		ldr	r0, [r0, #8]
+ 454 0020 FFF7FEFF 		bl	FLASH_OB_DisableWRP
+ 455              	.L54:
+ 456 0024 0028     		cmp	r0, #0
+ 457 0026 08D0     		beq	.L52
+ 458 0028 194B     		ldr	r3, .L67
+ 459 002a 0022     		movs	r2, #0
+ 460 002c 1A76     		strb	r2, [r3, #24]
+ 461 002e 10E0     		b	.L51
+ 462              	.L63:
+ 463 0030 8068     		ldr	r0, [r0, #8]
+ 464 0032 FFF7FEFF 		bl	FLASH_OB_EnableWRP
+ 465 0036 F5E7     		b	.L54
+ 466              	.L59:
+ 467 0038 0120     		movs	r0, #1
+ 468              	.L52:
+ 469 003a 2368     		ldr	r3, [r4]
+ 470 003c 9B07     		lsls	r3, r3, #30
+ 471 003e 09D4     		bmi	.L64
+ 472              	.L55:
+ 473 0040 2368     		ldr	r3, [r4]
+ 474 0042 5B07     		lsls	r3, r3, #29
+ 475 0044 0FD4     		bmi	.L65
+ 476              	.L56:
+ 477 0046 2368     		ldr	r3, [r4]
+ARM GAS  /tmp/cc1xhpla.s 			page 9
+
+
+ 478 0048 1B07     		lsls	r3, r3, #28
+ 479 004a 15D4     		bmi	.L66
+ 480              	.L57:
+ 481 004c 104B     		ldr	r3, .L67
+ 482 004e 0022     		movs	r2, #0
+ 483 0050 1A76     		strb	r2, [r3, #24]
+ 484              	.L51:
+ 485              		@ sp needed
+ 486 0052 10BD     		pop	{r4, pc}
+ 487              	.L64:
+ 488 0054 207B     		ldrb	r0, [r4, #12]
+ 489 0056 FFF7FEFF 		bl	FLASH_OB_RDP_LevelConfig
+ 490 005a 0028     		cmp	r0, #0
+ 491 005c F0D0     		beq	.L55
+ 492 005e 0C4B     		ldr	r3, .L67
+ 493 0060 0022     		movs	r2, #0
+ 494 0062 1A76     		strb	r2, [r3, #24]
+ 495 0064 F5E7     		b	.L51
+ 496              	.L65:
+ 497 0066 607B     		ldrb	r0, [r4, #13]
+ 498 0068 FFF7FEFF 		bl	FLASH_OB_UserConfig
+ 499 006c 0028     		cmp	r0, #0
+ 500 006e EAD0     		beq	.L56
+ 501 0070 074B     		ldr	r3, .L67
+ 502 0072 0022     		movs	r2, #0
+ 503 0074 1A76     		strb	r2, [r3, #24]
+ 504 0076 ECE7     		b	.L51
+ 505              	.L66:
+ 506 0078 217D     		ldrb	r1, [r4, #20]
+ 507 007a 2069     		ldr	r0, [r4, #16]
+ 508 007c FFF7FEFF 		bl	FLASH_OB_ProgramData
+ 509 0080 0028     		cmp	r0, #0
+ 510 0082 E3D0     		beq	.L57
+ 511 0084 024B     		ldr	r3, .L67
+ 512 0086 0022     		movs	r2, #0
+ 513 0088 1A76     		strb	r2, [r3, #24]
+ 514 008a E2E7     		b	.L51
+ 515              	.L58:
+ 516 008c 0220     		movs	r0, #2
+ 517 008e E0E7     		b	.L51
+ 518              	.L68:
+ 519              		.align	2
+ 520              	.L67:
+ 521 0090 00000000 		.word	pFlash
+ 523              		.section	.text.HAL_FLASHEx_OBGetConfig,"ax",%progbits
+ 524              		.align	1
+ 525              		.global	HAL_FLASHEx_OBGetConfig
+ 526              		.syntax unified
+ 527              		.code	16
+ 528              		.thumb_func
+ 530              	HAL_FLASHEx_OBGetConfig:
+ 531              		@ args = 0, pretend = 0, frame = 0
+ 532              		@ frame_needed = 0, uses_anonymous_args = 0
+ 533 0000 10B5     		push	{r4, lr}
+ 534 0002 0400     		movs	r4, r0
+ 535 0004 0723     		movs	r3, #7
+ 536 0006 0360     		str	r3, [r0]
+ARM GAS  /tmp/cc1xhpla.s 			page 10
+
+
+ 537 0008 FFF7FEFF 		bl	FLASH_OB_GetWRP
+ 538 000c A060     		str	r0, [r4, #8]
+ 539 000e FFF7FEFF 		bl	FLASH_OB_GetRDP
+ 540 0012 2073     		strb	r0, [r4, #12]
+ 541 0014 FFF7FEFF 		bl	FLASH_OB_GetUser
+ 542 0018 6073     		strb	r0, [r4, #13]
+ 543              		@ sp needed
+ 544 001a 10BD     		pop	{r4, pc}
+ 546              		.section	.text.HAL_FLASHEx_OBGetUserData,"ax",%progbits
+ 547              		.align	1
+ 548              		.global	HAL_FLASHEx_OBGetUserData
+ 549              		.syntax unified
+ 550              		.code	16
+ 551              		.thumb_func
+ 553              	HAL_FLASHEx_OBGetUserData:
+ 554              		@ args = 0, pretend = 0, frame = 0
+ 555              		@ frame_needed = 0, uses_anonymous_args = 0
+ 556              		@ link register save eliminated.
+ 557 0000 064B     		ldr	r3, .L74
+ 558 0002 9842     		cmp	r0, r3
+ 559 0004 03D0     		beq	.L73
+ 560 0006 064B     		ldr	r3, .L74+4
+ 561 0008 D869     		ldr	r0, [r3, #28]
+ 562 000a 000E     		lsrs	r0, r0, #24
+ 563              	.L70:
+ 564              		@ sp needed
+ 565 000c 7047     		bx	lr
+ 566              	.L73:
+ 567 000e 044B     		ldr	r3, .L74+4
+ 568 0010 DB69     		ldr	r3, [r3, #28]
+ 569 0012 1B0C     		lsrs	r3, r3, #16
+ 570 0014 FF20     		movs	r0, #255
+ 571 0016 1840     		ands	r0, r3
+ 572 0018 F8E7     		b	.L70
+ 573              	.L75:
+ 574 001a C046     		.align	2
+ 575              	.L74:
+ 576 001c 04F8FF1F 		.word	536868868
+ 577 0020 00200240 		.word	1073881088
+ 579              		.section	.text.FLASH_PageErase,"ax",%progbits
+ 580              		.align	1
+ 581              		.global	FLASH_PageErase
+ 582              		.syntax unified
+ 583              		.code	16
+ 584              		.thumb_func
+ 586              	FLASH_PageErase:
+ 587              		@ args = 0, pretend = 0, frame = 0
+ 588              		@ frame_needed = 0, uses_anonymous_args = 0
+ 589              		@ link register save eliminated.
+ 590 0000 064B     		ldr	r3, .L77
+ 591 0002 0022     		movs	r2, #0
+ 592 0004 DA61     		str	r2, [r3, #28]
+ 593 0006 064B     		ldr	r3, .L77+4
+ 594 0008 1A69     		ldr	r2, [r3, #16]
+ 595 000a 0221     		movs	r1, #2
+ 596 000c 0A43     		orrs	r2, r1
+ 597 000e 1A61     		str	r2, [r3, #16]
+ARM GAS  /tmp/cc1xhpla.s 			page 11
+
+
+ 598 0010 5861     		str	r0, [r3, #20]
+ 599 0012 1A69     		ldr	r2, [r3, #16]
+ 600 0014 3E31     		adds	r1, r1, #62
+ 601 0016 0A43     		orrs	r2, r1
+ 602 0018 1A61     		str	r2, [r3, #16]
+ 603              		@ sp needed
+ 604 001a 7047     		bx	lr
+ 605              	.L78:
+ 606              		.align	2
+ 607              	.L77:
+ 608 001c 00000000 		.word	pFlash
+ 609 0020 00200240 		.word	1073881088
+ 611              		.section	.text.HAL_FLASHEx_Erase,"ax",%progbits
+ 612              		.align	1
+ 613              		.global	HAL_FLASHEx_Erase
+ 614              		.syntax unified
+ 615              		.code	16
+ 616              		.thumb_func
+ 618              	HAL_FLASHEx_Erase:
+ 619              		@ args = 0, pretend = 0, frame = 0
+ 620              		@ frame_needed = 0, uses_anonymous_args = 0
+ 621 0000 70B5     		push	{r4, r5, r6, lr}
+ 622 0002 0500     		movs	r5, r0
+ 623 0004 0E00     		movs	r6, r1
+ 624 0006 234B     		ldr	r3, .L92
+ 625 0008 1B7E     		ldrb	r3, [r3, #24]
+ 626 000a 012B     		cmp	r3, #1
+ 627 000c 40D0     		beq	.L86
+ 628 000e 214B     		ldr	r3, .L92
+ 629 0010 0122     		movs	r2, #1
+ 630 0012 1A76     		strb	r2, [r3, #24]
+ 631 0014 0368     		ldr	r3, [r0]
+ 632 0016 012B     		cmp	r3, #1
+ 633 0018 21D0     		beq	.L89
+ 634 001a 1F48     		ldr	r0, .L92+4
+ 635 001c FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 636 0020 0028     		cmp	r0, #0
+ 637 0022 30D1     		bne	.L88
+ 638 0024 0123     		movs	r3, #1
+ 639 0026 5B42     		rsbs	r3, r3, #0
+ 640 0028 3360     		str	r3, [r6]
+ 641 002a 6C68     		ldr	r4, [r5, #4]
+ 642 002c 0130     		adds	r0, r0, #1
+ 643              	.L83:
+ 644 002e AB68     		ldr	r3, [r5, #8]
+ 645 0030 9B02     		lsls	r3, r3, #10
+ 646 0032 6A68     		ldr	r2, [r5, #4]
+ 647 0034 9B18     		adds	r3, r3, r2
+ 648 0036 A342     		cmp	r3, r4
+ 649 0038 26D9     		bls	.L82
+ 650 003a 2000     		movs	r0, r4
+ 651 003c FFF7FEFF 		bl	FLASH_PageErase
+ 652 0040 1548     		ldr	r0, .L92+4
+ 653 0042 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 654 0046 154A     		ldr	r2, .L92+8
+ 655 0048 1369     		ldr	r3, [r2, #16]
+ 656 004a 0221     		movs	r1, #2
+ARM GAS  /tmp/cc1xhpla.s 			page 12
+
+
+ 657 004c 8B43     		bics	r3, r1
+ 658 004e 1361     		str	r3, [r2, #16]
+ 659 0050 0028     		cmp	r0, #0
+ 660 0052 16D1     		bne	.L90
+ 661 0054 8023     		movs	r3, #128
+ 662 0056 DB00     		lsls	r3, r3, #3
+ 663 0058 9C46     		mov	ip, r3
+ 664 005a 6444     		add	r4, r4, ip
+ 665 005c E7E7     		b	.L83
+ 666              	.L89:
+ 667 005e 0E48     		ldr	r0, .L92+4
+ 668 0060 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 669 0064 0028     		cmp	r0, #0
+ 670 0066 01D0     		beq	.L91
+ 671 0068 0120     		movs	r0, #1
+ 672 006a 0DE0     		b	.L82
+ 673              	.L91:
+ 674 006c FFF7FEFF 		bl	FLASH_MassErase
+ 675 0070 0948     		ldr	r0, .L92+4
+ 676 0072 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 677 0076 094A     		ldr	r2, .L92+8
+ 678 0078 1369     		ldr	r3, [r2, #16]
+ 679 007a 0421     		movs	r1, #4
+ 680 007c 8B43     		bics	r3, r1
+ 681 007e 1361     		str	r3, [r2, #16]
+ 682 0080 02E0     		b	.L82
+ 683              	.L90:
+ 684 0082 3460     		str	r4, [r6]
+ 685 0084 00E0     		b	.L82
+ 686              	.L88:
+ 687 0086 0120     		movs	r0, #1
+ 688              	.L82:
+ 689 0088 024B     		ldr	r3, .L92
+ 690 008a 0022     		movs	r2, #0
+ 691 008c 1A76     		strb	r2, [r3, #24]
+ 692              	.L80:
+ 693              		@ sp needed
+ 694 008e 70BD     		pop	{r4, r5, r6, pc}
+ 695              	.L86:
+ 696 0090 0220     		movs	r0, #2
+ 697 0092 FCE7     		b	.L80
+ 698              	.L93:
+ 699              		.align	2
+ 700              	.L92:
+ 701 0094 00000000 		.word	pFlash
+ 702 0098 50C30000 		.word	50000
+ 703 009c 00200240 		.word	1073881088
+ 705              		.section	.text.HAL_FLASHEx_Erase_IT,"ax",%progbits
+ 706              		.align	1
+ 707              		.global	HAL_FLASHEx_Erase_IT
+ 708              		.syntax unified
+ 709              		.code	16
+ 710              		.thumb_func
+ 712              	HAL_FLASHEx_Erase_IT:
+ 713              		@ args = 0, pretend = 0, frame = 0
+ 714              		@ frame_needed = 0, uses_anonymous_args = 0
+ 715 0000 10B5     		push	{r4, lr}
+ARM GAS  /tmp/cc1xhpla.s 			page 13
+
+
+ 716 0002 144B     		ldr	r3, .L100
+ 717 0004 1B7E     		ldrb	r3, [r3, #24]
+ 718 0006 012B     		cmp	r3, #1
+ 719 0008 20D0     		beq	.L97
+ 720 000a 124B     		ldr	r3, .L100
+ 721 000c 0122     		movs	r2, #1
+ 722 000e 1A76     		strb	r2, [r3, #24]
+ 723 0010 1B78     		ldrb	r3, [r3]
+ 724 0012 DCB2     		uxtb	r4, r3
+ 725 0014 002B     		cmp	r3, #0
+ 726 0016 1BD1     		bne	.L98
+ 727 0018 0F4A     		ldr	r2, .L100+4
+ 728 001a 1169     		ldr	r1, [r2, #16]
+ 729 001c A023     		movs	r3, #160
+ 730 001e 5B01     		lsls	r3, r3, #5
+ 731 0020 0B43     		orrs	r3, r1
+ 732 0022 1361     		str	r3, [r2, #16]
+ 733 0024 0368     		ldr	r3, [r0]
+ 734 0026 012B     		cmp	r3, #1
+ 735 0028 0AD0     		beq	.L99
+ 736 002a 0A4B     		ldr	r3, .L100
+ 737 002c 0122     		movs	r2, #1
+ 738 002e 1A70     		strb	r2, [r3]
+ 739 0030 8268     		ldr	r2, [r0, #8]
+ 740 0032 5A60     		str	r2, [r3, #4]
+ 741 0034 4068     		ldr	r0, [r0, #4]
+ 742 0036 9860     		str	r0, [r3, #8]
+ 743 0038 FFF7FEFF 		bl	FLASH_PageErase
+ 744              	.L95:
+ 745 003c 2000     		movs	r0, r4
+ 746              		@ sp needed
+ 747 003e 10BD     		pop	{r4, pc}
+ 748              	.L99:
+ 749 0040 044B     		ldr	r3, .L100
+ 750 0042 0222     		movs	r2, #2
+ 751 0044 1A70     		strb	r2, [r3]
+ 752 0046 FFF7FEFF 		bl	FLASH_MassErase
+ 753 004a F7E7     		b	.L95
+ 754              	.L97:
+ 755 004c 0224     		movs	r4, #2
+ 756 004e F5E7     		b	.L95
+ 757              	.L98:
+ 758 0050 0124     		movs	r4, #1
+ 759 0052 F3E7     		b	.L95
+ 760              	.L101:
+ 761              		.align	2
+ 762              	.L100:
+ 763 0054 00000000 		.word	pFlash
+ 764 0058 00200240 		.word	1073881088
+ 766              		.ident	"GCC: (Arch Repository) 14.2.0"
+ARM GAS  /tmp/cc1xhpla.s 			page 14
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f0xx_hal_flash_ex.c
+     /tmp/cc1xhpla.s:16     .text.FLASH_MassErase:00000000 $t
+     /tmp/cc1xhpla.s:21     .text.FLASH_MassErase:00000000 FLASH_MassErase
+     /tmp/cc1xhpla.s:42     .text.FLASH_MassErase:0000001c $d
+     /tmp/cc1xhpla.s:46     .text.FLASH_OB_GetWRP:00000000 $t
+     /tmp/cc1xhpla.s:51     .text.FLASH_OB_GetWRP:00000000 FLASH_OB_GetWRP
+     /tmp/cc1xhpla.s:62     .text.FLASH_OB_GetWRP:00000008 $d
+     /tmp/cc1xhpla.s:65     .text.FLASH_OB_GetRDP:00000000 $t
+     /tmp/cc1xhpla.s:70     .text.FLASH_OB_GetRDP:00000000 FLASH_OB_GetRDP
+     /tmp/cc1xhpla.s:94     .text.FLASH_OB_GetRDP:0000001c $d
+     /tmp/cc1xhpla.s:97     .text.FLASH_OB_GetUser:00000000 $t
+     /tmp/cc1xhpla.s:102    .text.FLASH_OB_GetUser:00000000 FLASH_OB_GetUser
+     /tmp/cc1xhpla.s:115    .text.FLASH_OB_GetUser:0000000c $d
+     /tmp/cc1xhpla.s:118    .text.FLASH_OB_RDP_LevelConfig:00000000 $t
+     /tmp/cc1xhpla.s:123    .text.FLASH_OB_RDP_LevelConfig:00000000 FLASH_OB_RDP_LevelConfig
+     /tmp/cc1xhpla.s:170    .text.FLASH_OB_RDP_LevelConfig:00000054 $d
+     /tmp/cc1xhpla.s:176    .text.FLASH_OB_UserConfig:00000000 $t
+     /tmp/cc1xhpla.s:181    .text.FLASH_OB_UserConfig:00000000 FLASH_OB_UserConfig
+     /tmp/cc1xhpla.s:213    .text.FLASH_OB_UserConfig:00000034 $d
+     /tmp/cc1xhpla.s:219    .text.FLASH_OB_ProgramData:00000000 $t
+     /tmp/cc1xhpla.s:224    .text.FLASH_OB_ProgramData:00000000 FLASH_OB_ProgramData
+     /tmp/cc1xhpla.s:256    .text.FLASH_OB_ProgramData:00000034 $d
+     /tmp/cc1xhpla.s:261    .text.HAL_FLASHEx_OBErase:00000000 $t
+     /tmp/cc1xhpla.s:267    .text.HAL_FLASHEx_OBErase:00000000 HAL_FLASHEx_OBErase
+     /tmp/cc1xhpla.s:306    .text.HAL_FLASHEx_OBErase:00000044 $d
+     /tmp/cc1xhpla.s:311    .text.FLASH_OB_EnableWRP:00000000 $t
+     /tmp/cc1xhpla.s:316    .text.FLASH_OB_EnableWRP:00000000 FLASH_OB_EnableWRP
+     /tmp/cc1xhpla.s:364    .text.FLASH_OB_EnableWRP:00000054 $d
+     /tmp/cc1xhpla.s:370    .text.FLASH_OB_DisableWRP:00000000 $t
+     /tmp/cc1xhpla.s:375    .text.FLASH_OB_DisableWRP:00000000 FLASH_OB_DisableWRP
+     /tmp/cc1xhpla.s:423    .text.FLASH_OB_DisableWRP:00000054 $d
+     /tmp/cc1xhpla.s:429    .text.HAL_FLASHEx_OBProgram:00000000 $t
+     /tmp/cc1xhpla.s:435    .text.HAL_FLASHEx_OBProgram:00000000 HAL_FLASHEx_OBProgram
+     /tmp/cc1xhpla.s:521    .text.HAL_FLASHEx_OBProgram:00000090 $d
+     /tmp/cc1xhpla.s:524    .text.HAL_FLASHEx_OBGetConfig:00000000 $t
+     /tmp/cc1xhpla.s:530    .text.HAL_FLASHEx_OBGetConfig:00000000 HAL_FLASHEx_OBGetConfig
+     /tmp/cc1xhpla.s:547    .text.HAL_FLASHEx_OBGetUserData:00000000 $t
+     /tmp/cc1xhpla.s:553    .text.HAL_FLASHEx_OBGetUserData:00000000 HAL_FLASHEx_OBGetUserData
+     /tmp/cc1xhpla.s:576    .text.HAL_FLASHEx_OBGetUserData:0000001c $d
+     /tmp/cc1xhpla.s:580    .text.FLASH_PageErase:00000000 $t
+     /tmp/cc1xhpla.s:586    .text.FLASH_PageErase:00000000 FLASH_PageErase
+     /tmp/cc1xhpla.s:608    .text.FLASH_PageErase:0000001c $d
+     /tmp/cc1xhpla.s:612    .text.HAL_FLASHEx_Erase:00000000 $t
+     /tmp/cc1xhpla.s:618    .text.HAL_FLASHEx_Erase:00000000 HAL_FLASHEx_Erase
+     /tmp/cc1xhpla.s:701    .text.HAL_FLASHEx_Erase:00000094 $d
+     /tmp/cc1xhpla.s:706    .text.HAL_FLASHEx_Erase_IT:00000000 $t
+     /tmp/cc1xhpla.s:712    .text.HAL_FLASHEx_Erase_IT:00000000 HAL_FLASHEx_Erase_IT
+     /tmp/cc1xhpla.s:763    .text.HAL_FLASHEx_Erase_IT:00000054 $d
+
+UNDEFINED SYMBOLS
+pFlash
+FLASH_WaitForLastOperation

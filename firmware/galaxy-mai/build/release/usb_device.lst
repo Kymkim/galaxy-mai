@@ -1,0 +1,93 @@
+ARM GAS  /tmp/cc8xedQv.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.arch armv6s-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"usb_device.c"
+  14              		.text
+  15              		.section	.text.MX_USB_DEVICE_Init,"ax",%progbits
+  16              		.align	1
+  17              		.global	MX_USB_DEVICE_Init
+  18              		.syntax unified
+  19              		.code	16
+  20              		.thumb_func
+  22              	MX_USB_DEVICE_Init:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25 0000 10B5     		push	{r4, lr}
+  26 0002 0E49     		ldr	r1, .L8
+  27 0004 0E48     		ldr	r0, .L8+4
+  28 0006 0022     		movs	r2, #0
+  29 0008 FFF7FEFF 		bl	USBD_Init
+  30 000c 0028     		cmp	r0, #0
+  31 000e 0BD1     		bne	.L5
+  32              	.L2:
+  33 0010 0C49     		ldr	r1, .L8+8
+  34 0012 0B48     		ldr	r0, .L8+4
+  35 0014 FFF7FEFF 		bl	USBD_RegisterClass
+  36 0018 0028     		cmp	r0, #0
+  37 001a 08D1     		bne	.L6
+  38              	.L3:
+  39 001c 0848     		ldr	r0, .L8+4
+  40 001e FFF7FEFF 		bl	USBD_Start
+  41 0022 0028     		cmp	r0, #0
+  42 0024 06D1     		bne	.L7
+  43              	.L1:
+  44              		@ sp needed
+  45 0026 10BD     		pop	{r4, pc}
+  46              	.L5:
+  47 0028 FFF7FEFF 		bl	Error_Handler
+  48 002c F0E7     		b	.L2
+  49              	.L6:
+  50 002e FFF7FEFF 		bl	Error_Handler
+  51 0032 F3E7     		b	.L3
+  52              	.L7:
+  53 0034 FFF7FEFF 		bl	Error_Handler
+  54 0038 F5E7     		b	.L1
+  55              	.L9:
+  56 003a C046     		.align	2
+  57              	.L8:
+  58 003c 00000000 		.word	FS_Desc
+ARM GAS  /tmp/cc8xedQv.s 			page 2
+
+
+  59 0040 00000000 		.word	hUsbDeviceFS
+  60 0044 00000000 		.word	USBD_HID
+  62              		.global	hUsbDeviceFS
+  63              		.section	.bss.hUsbDeviceFS,"aw",%nobits
+  64              		.align	2
+  67              	hUsbDeviceFS:
+  68 0000 00000000 		.space	708
+  68      00000000 
+  68      00000000 
+  68      00000000 
+  68      00000000 
+  69              		.ident	"GCC: (Arch Repository) 14.2.0"
+ARM GAS  /tmp/cc8xedQv.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 usb_device.c
+     /tmp/cc8xedQv.s:16     .text.MX_USB_DEVICE_Init:00000000 $t
+     /tmp/cc8xedQv.s:22     .text.MX_USB_DEVICE_Init:00000000 MX_USB_DEVICE_Init
+     /tmp/cc8xedQv.s:58     .text.MX_USB_DEVICE_Init:0000003c $d
+     /tmp/cc8xedQv.s:67     .bss.hUsbDeviceFS:00000000 hUsbDeviceFS
+     /tmp/cc8xedQv.s:64     .bss.hUsbDeviceFS:00000000 $d
+
+UNDEFINED SYMBOLS
+USBD_Init
+USBD_RegisterClass
+USBD_Start
+Error_Handler
+FS_Desc
+USBD_HID

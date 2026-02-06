@@ -1,0 +1,71 @@
+ARM GAS  /tmp/cc1BMZlM.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.arch armv6s-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"gpio.c"
+  14              		.text
+  15              		.section	.text.MX_GPIO_Init,"ax",%progbits
+  16              		.align	1
+  17              		.global	MX_GPIO_Init
+  18              		.syntax unified
+  19              		.code	16
+  20              		.thumb_func
+  22              	MX_GPIO_Init:
+  23              		@ args = 0, pretend = 0, frame = 24
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25 0000 10B5     		push	{r4, lr}
+  26 0002 86B0     		sub	sp, sp, #24
+  27 0004 01AC     		add	r4, sp, #4
+  28 0006 1422     		movs	r2, #20
+  29 0008 0021     		movs	r1, #0
+  30 000a 2000     		movs	r0, r4
+  31 000c FFF7FEFF 		bl	memset
+  32 0010 0A4B     		ldr	r3, .L2
+  33 0012 5A69     		ldr	r2, [r3, #20]
+  34 0014 8021     		movs	r1, #128
+  35 0016 8902     		lsls	r1, r1, #10
+  36 0018 0A43     		orrs	r2, r1
+  37 001a 5A61     		str	r2, [r3, #20]
+  38 001c 5B69     		ldr	r3, [r3, #20]
+  39 001e 0B40     		ands	r3, r1
+  40 0020 0093     		str	r3, [sp]
+  41 0022 009B     		ldr	r3, [sp]
+  42 0024 FF23     		movs	r3, #255
+  43 0026 0193     		str	r3, [sp, #4]
+  44 0028 FD3B     		subs	r3, r3, #253
+  45 002a 0393     		str	r3, [sp, #12]
+  46 002c 9020     		movs	r0, #144
+  47 002e 2100     		movs	r1, r4
+  48 0030 C005     		lsls	r0, r0, #23
+  49 0032 FFF7FEFF 		bl	HAL_GPIO_Init
+  50 0036 06B0     		add	sp, sp, #24
+  51              		@ sp needed
+  52 0038 10BD     		pop	{r4, pc}
+  53              	.L3:
+  54 003a C046     		.align	2
+  55              	.L2:
+  56 003c 00100240 		.word	1073876992
+  58              		.ident	"GCC: (Arch Repository) 14.2.0"
+ARM GAS  /tmp/cc1BMZlM.s 			page 2
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 gpio.c
+     /tmp/cc1BMZlM.s:16     .text.MX_GPIO_Init:00000000 $t
+     /tmp/cc1BMZlM.s:22     .text.MX_GPIO_Init:00000000 MX_GPIO_Init
+     /tmp/cc1BMZlM.s:56     .text.MX_GPIO_Init:0000003c $d
+
+UNDEFINED SYMBOLS
+memset
+HAL_GPIO_Init

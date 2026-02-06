@@ -157,8 +157,8 @@ __ALIGN_BEGIN static uint8_t USBD_HID_CfgFSDesc[USB_HID_CONFIG_DESC_SIZ]  __ALIG
   0x00,         /*bAlternateSetting: Alternate setting*/
   0x01,         /*bNumEndpoints*/
   0x03,         /*bInterfaceClass: HID*/
-  0x01,         /*bInterfaceSubClass : 1=BOOT, 0=no boot*/
-  0x02,         /*nInterfaceProtocol : 0=none, 1=keyboard, 2=mouse*/
+  0x00,         /*bInterfaceSubClass : 1=BOOT, 0=no boot*/
+  0x00,         /*nInterfaceProtocol : 0=none, 1=keyboard, 2=mouse*/
   0,            /*iInterface: Index of string descriptor*/
   /******************** Descriptor of Joystick Mouse HID ********************/
   /* 18 */
@@ -208,7 +208,7 @@ __ALIGN_BEGIN static uint8_t USBD_HID_CfgHSDesc[USB_HID_CONFIG_DESC_SIZ]  __ALIG
   0x01,         /*bNumEndpoints*/
   0x03,         /*bInterfaceClass: HID*/
   0x01,         /*bInterfaceSubClass : 1=BOOT, 0=no boot*/
-  0x02,         /*nInterfaceProtocol : 0=none, 1=keyboard, 2=mouse*/
+  0x00,         /*nInterfaceProtocol : 0=none, 1=keyboard, 2=mouse*/
   0,            /*iInterface: Index of string descriptor*/
   /******************** Descriptor of Joystick Mouse HID ********************/
   /* 18 */
@@ -317,52 +317,37 @@ __ALIGN_BEGIN static uint8_t USBD_HID_DeviceQualifierDesc[USB_LEN_DEV_QUALIFIER_
 
 __ALIGN_BEGIN static uint8_t HID_MOUSE_ReportDesc[HID_MOUSE_REPORT_DESC_SIZE]  __ALIGN_END =
 {
-  0x05,   0x01,
-  0x09,   0x02,
-  0xA1,   0x01,
-  0x09,   0x01,
+		//   0xC0               /* End Collection                     */
+	  0x05, 0x01,        // Usage Page (Generic Desktop)
+	  0x09, 0x06,        // Usage (Keyboard)
+	  0xA1, 0x01,        // Collection (Application)
 
-  0xA1,   0x00,
-  0x05,   0x09,
-  0x19,   0x01,
-  0x29,   0x03,
+	  // Modifiers (8 bits)
+	  0x05, 0x07,        // Usage Page (Keyboard/Keypad)
+	  0x19, 0xE0,        // Usage Minimum (224) - Left Control
+	  0x29, 0xE7,        // Usage Maximum (231) - Right GUI
+	  0x15, 0x00,        // Logical Minimum (0)
+	  0x25, 0x01,        // Logical Maximum (1)
+	  0x75, 0x01,        // Report Size (1 bit)
+	  0x95, 0x08,        // Report Count (8 bits)
+	  0x81, 0x02,        // Input (Data, Variable, Absolute)
 
-  0x15,   0x00,
-  0x25,   0x01,
-  0x95,   0x03,
-  0x75,   0x01,
+	  // Reserved byte (8 bits)
+	  0x75, 0x08,        // Report Size (8 bits)
+	  0x95, 0x01,        // Report Count (1)
+	  0x81, 0x01,        // Input (Constant)
 
-  0x81,   0x02,
-  0x95,   0x01,
-  0x75,   0x05,
-  0x81,   0x01,
+	  // Key bitfield (96 bits = 12 bytes)
+	  0x05, 0x07,        // Usage Page (Keyboard/Keypad)
+	  0x19, 0x04,        // Usage Minimum (4) — 'A' key
+	  0x29, 0x63,        // Usage Maximum (99) — 96 keys total (4 to 99)
+	  0x15, 0x00,        // Logical Minimum (0)
+	  0x25, 0x01,        // Logical Maximum (1)
+	  0x75, 0x01,        // Report Size (1 bit)
+	  0x95, 0x60,        // Report Count (96 bits)
+	  0x81, 0x02,        // Input (Data, Variable, Absolute)
 
-  0x05,   0x01,
-  0x09,   0x30,
-  0x09,   0x31,
-  0x09,   0x38,
-
-  0x15,   0x81,
-  0x25,   0x7F,
-  0x75,   0x08,
-  0x95,   0x03,
-
-  0x81,   0x06,
-  0xC0,   0x09,
-  0x3c,   0x05,
-  0xff,   0x09,
-
-  0x01,   0x15,
-  0x00,   0x25,
-  0x01,   0x75,
-  0x01,   0x95,
-
-  0x02,   0xb1,
-  0x22,   0x75,
-  0x06,   0x95,
-  0x01,   0xb1,
-
-  0x01,   0xc0
+	  0xC0               // End Collection
 };
 
 /**

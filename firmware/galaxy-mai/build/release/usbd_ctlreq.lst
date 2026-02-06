@@ -1,0 +1,1233 @@
+ARM GAS  /tmp/ccZo90TG.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.arch armv6s-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"usbd_ctlreq.c"
+  14              		.text
+  15              		.section	.text.USBD_GetLen,"ax",%progbits
+  16              		.align	1
+  17              		.syntax unified
+  18              		.code	16
+  19              		.thumb_func
+  21              	USBD_GetLen:
+  22              		@ args = 0, pretend = 0, frame = 0
+  23              		@ frame_needed = 0, uses_anonymous_args = 0
+  24              		@ link register save eliminated.
+  25 0000 0300     		movs	r3, r0
+  26 0002 0020     		movs	r0, #0
+  27 0004 02E0     		b	.L2
+  28              	.L3:
+  29 0006 0130     		adds	r0, r0, #1
+  30 0008 C0B2     		uxtb	r0, r0
+  31 000a 0133     		adds	r3, r3, #1
+  32              	.L2:
+  33 000c 1A78     		ldrb	r2, [r3]
+  34 000e 002A     		cmp	r2, #0
+  35 0010 F9D1     		bne	.L3
+  36              		@ sp needed
+  37 0012 7047     		bx	lr
+  39              		.section	.text.USBD_SetFeature,"ax",%progbits
+  40              		.align	1
+  41              		.syntax unified
+  42              		.code	16
+  43              		.thumb_func
+  45              	USBD_SetFeature:
+  46              		@ args = 0, pretend = 0, frame = 0
+  47              		@ frame_needed = 0, uses_anonymous_args = 0
+  48 0000 10B5     		push	{r4, lr}
+  49 0002 4B88     		ldrh	r3, [r1, #2]
+  50 0004 012B     		cmp	r3, #1
+  51 0006 00D0     		beq	.L6
+  52              	.L4:
+  53              		@ sp needed
+  54 0008 10BD     		pop	{r4, pc}
+  55              	.L6:
+  56 000a A923     		movs	r3, #169
+  57 000c 9B00     		lsls	r3, r3, #2
+  58 000e 0122     		movs	r2, #1
+  59 0010 C250     		str	r2, [r0, r3]
+  60 0012 FFF7FEFF 		bl	USBD_CtlSendStatus
+ARM GAS  /tmp/ccZo90TG.s 			page 2
+
+
+  61 0016 F7E7     		b	.L4
+  63              		.section	.text.USBD_ParseSetupRequest,"ax",%progbits
+  64              		.align	1
+  65              		.global	USBD_ParseSetupRequest
+  66              		.syntax unified
+  67              		.code	16
+  68              		.thumb_func
+  70              	USBD_ParseSetupRequest:
+  71              		@ args = 0, pretend = 0, frame = 0
+  72              		@ frame_needed = 0, uses_anonymous_args = 0
+  73              		@ link register save eliminated.
+  74 0000 0B78     		ldrb	r3, [r1]
+  75 0002 0370     		strb	r3, [r0]
+  76 0004 4B78     		ldrb	r3, [r1, #1]
+  77 0006 4370     		strb	r3, [r0, #1]
+  78 0008 8B78     		ldrb	r3, [r1, #2]
+  79 000a CA78     		ldrb	r2, [r1, #3]
+  80 000c 1202     		lsls	r2, r2, #8
+  81 000e 9B18     		adds	r3, r3, r2
+  82 0010 4380     		strh	r3, [r0, #2]
+  83 0012 0B79     		ldrb	r3, [r1, #4]
+  84 0014 4A79     		ldrb	r2, [r1, #5]
+  85 0016 1202     		lsls	r2, r2, #8
+  86 0018 9B18     		adds	r3, r3, r2
+  87 001a 8380     		strh	r3, [r0, #4]
+  88 001c 8B79     		ldrb	r3, [r1, #6]
+  89 001e CA79     		ldrb	r2, [r1, #7]
+  90 0020 1202     		lsls	r2, r2, #8
+  91 0022 9B18     		adds	r3, r3, r2
+  92 0024 C380     		strh	r3, [r0, #6]
+  93              		@ sp needed
+  94 0026 7047     		bx	lr
+  96              		.section	.text.USBD_CtlError,"ax",%progbits
+  97              		.align	1
+  98              		.global	USBD_CtlError
+  99              		.syntax unified
+ 100              		.code	16
+ 101              		.thumb_func
+ 103              	USBD_CtlError:
+ 104              		@ args = 0, pretend = 0, frame = 0
+ 105              		@ frame_needed = 0, uses_anonymous_args = 0
+ 106 0000 10B5     		push	{r4, lr}
+ 107 0002 0400     		movs	r4, r0
+ 108 0004 8021     		movs	r1, #128
+ 109 0006 FFF7FEFF 		bl	USBD_LL_StallEP
+ 110 000a 0021     		movs	r1, #0
+ 111 000c 2000     		movs	r0, r4
+ 112 000e FFF7FEFF 		bl	USBD_LL_StallEP
+ 113              		@ sp needed
+ 114 0012 10BD     		pop	{r4, pc}
+ 116              		.section	.text.USBD_GetDescriptor,"ax",%progbits
+ 117              		.align	1
+ 118              		.syntax unified
+ 119              		.code	16
+ 120              		.thumb_func
+ 122              	USBD_GetDescriptor:
+ 123              		@ args = 0, pretend = 0, frame = 8
+ARM GAS  /tmp/ccZo90TG.s 			page 3
+
+
+ 124              		@ frame_needed = 0, uses_anonymous_args = 0
+ 125 0000 30B5     		push	{r4, r5, lr}
+ 126 0002 83B0     		sub	sp, sp, #12
+ 127 0004 0500     		movs	r5, r0
+ 128 0006 0C00     		movs	r4, r1
+ 129 0008 6B46     		mov	r3, sp
+ 130 000a 0022     		movs	r2, #0
+ 131 000c DA80     		strh	r2, [r3, #6]
+ 132 000e 4A88     		ldrh	r2, [r1, #2]
+ 133 0010 130A     		lsrs	r3, r2, #8
+ 134 0012 072B     		cmp	r3, #7
+ 135 0014 00D9     		bls	.LCB122
+ 136 0016 B6E0     		b	.L10	@long jump
+ 137              	.LCB122:
+ 138 0018 9B00     		lsls	r3, r3, #2
+ 139 001a 6549     		ldr	r1, .L42
+ 140 001c CB58     		ldr	r3, [r1, r3]
+ 141 001e 9F46     		mov	pc, r3
+ 142              		.section	.rodata.USBD_GetDescriptor,"a",%progbits
+ 143              		.align	2
+ 144              	.L12:
+ 145 0000 86010000 		.word	.L10
+ 146 0004 20000000 		.word	.L16
+ 147 0008 4E000000 		.word	.L15
+ 148 000c 7C000000 		.word	.L14
+ 149 0010 86010000 		.word	.L10
+ 150 0014 86010000 		.word	.L10
+ 151 0018 46010000 		.word	.L13
+ 152 001c 64010000 		.word	.L11
+ 153              		.section	.text.USBD_GetDescriptor
+ 154              	.L16:
+ 155 0020 AC23     		movs	r3, #172
+ 156 0022 9B00     		lsls	r3, r3, #2
+ 157 0024 C358     		ldr	r3, [r0, r3]
+ 158 0026 1B68     		ldr	r3, [r3]
+ 159 0028 007C     		ldrb	r0, [r0, #16]
+ 160 002a 6A46     		mov	r2, sp
+ 161 002c 911D     		adds	r1, r2, #6
+ 162 002e 9847     		blx	r3
+ 163              	.L17:
+ 164 0030 6B46     		mov	r3, sp
+ 165 0032 0633     		adds	r3, r3, #6
+ 166 0034 1B88     		ldrh	r3, [r3]
+ 167 0036 002B     		cmp	r3, #0
+ 168 0038 03D0     		beq	.L37
+ 169 003a E288     		ldrh	r2, [r4, #6]
+ 170 003c 002A     		cmp	r2, #0
+ 171 003e 00D0     		beq	.LCB151
+ 172 0040 A6E0     		b	.L40	@long jump
+ 173              	.LCB151:
+ 174              	.L37:
+ 175 0042 E388     		ldrh	r3, [r4, #6]
+ 176 0044 002B     		cmp	r3, #0
+ 177 0046 00D1     		bne	.LCB155
+ 178 0048 AEE0     		b	.L41	@long jump
+ 179              	.LCB155:
+ 180              	.L9:
+ARM GAS  /tmp/ccZo90TG.s 			page 4
+
+
+ 181 004a 03B0     		add	sp, sp, #12
+ 182              		@ sp needed
+ 183 004c 30BD     		pop	{r4, r5, pc}
+ 184              	.L15:
+ 185 004e 037C     		ldrb	r3, [r0, #16]
+ 186 0050 002B     		cmp	r3, #0
+ 187 0052 09D1     		bne	.L18
+ 188 0054 AD23     		movs	r3, #173
+ 189 0056 9B00     		lsls	r3, r3, #2
+ 190 0058 C358     		ldr	r3, [r0, r3]
+ 191 005a 9B6A     		ldr	r3, [r3, #40]
+ 192 005c 6A46     		mov	r2, sp
+ 193 005e 901D     		adds	r0, r2, #6
+ 194 0060 9847     		blx	r3
+ 195 0062 0223     		movs	r3, #2
+ 196 0064 4370     		strb	r3, [r0, #1]
+ 197 0066 E3E7     		b	.L17
+ 198              	.L18:
+ 199 0068 AD23     		movs	r3, #173
+ 200 006a 9B00     		lsls	r3, r3, #2
+ 201 006c C358     		ldr	r3, [r0, r3]
+ 202 006e DB6A     		ldr	r3, [r3, #44]
+ 203 0070 6A46     		mov	r2, sp
+ 204 0072 901D     		adds	r0, r2, #6
+ 205 0074 9847     		blx	r3
+ 206 0076 0223     		movs	r3, #2
+ 207 0078 4370     		strb	r3, [r0, #1]
+ 208 007a D9E7     		b	.L17
+ 209              	.L14:
+ 210 007c D2B2     		uxtb	r2, r2
+ 211 007e 052A     		cmp	r2, #5
+ 212 0080 5DD8     		bhi	.L19
+ 213 0082 9200     		lsls	r2, r2, #2
+ 214 0084 4B4B     		ldr	r3, .L42+4
+ 215 0086 9B58     		ldr	r3, [r3, r2]
+ 216 0088 9F46     		mov	pc, r3
+ 217              		.section	.rodata.USBD_GetDescriptor
+ 218              		.align	2
+ 219              	.L21:
+ 220 0020 8A000000 		.word	.L26
+ 221 0024 A8000000 		.word	.L25
+ 222 0028 C6000000 		.word	.L24
+ 223 002c E4000000 		.word	.L23
+ 224 0030 02010000 		.word	.L22
+ 225 0034 20010000 		.word	.L20
+ 226              		.section	.text.USBD_GetDescriptor
+ 227              	.L26:
+ 228 008a AC23     		movs	r3, #172
+ 229 008c 9B00     		lsls	r3, r3, #2
+ 230 008e C358     		ldr	r3, [r0, r3]
+ 231 0090 5B68     		ldr	r3, [r3, #4]
+ 232 0092 002B     		cmp	r3, #0
+ 233 0094 04D0     		beq	.L27
+ 234 0096 007C     		ldrb	r0, [r0, #16]
+ 235 0098 6A46     		mov	r2, sp
+ 236 009a 911D     		adds	r1, r2, #6
+ 237 009c 9847     		blx	r3
+ARM GAS  /tmp/ccZo90TG.s 			page 5
+
+
+ 238 009e C7E7     		b	.L17
+ 239              	.L27:
+ 240 00a0 2100     		movs	r1, r4
+ 241 00a2 FFF7FEFF 		bl	USBD_CtlError
+ 242 00a6 D0E7     		b	.L9
+ 243              	.L25:
+ 244 00a8 AC23     		movs	r3, #172
+ 245 00aa 9B00     		lsls	r3, r3, #2
+ 246 00ac C358     		ldr	r3, [r0, r3]
+ 247 00ae 9B68     		ldr	r3, [r3, #8]
+ 248 00b0 002B     		cmp	r3, #0
+ 249 00b2 04D0     		beq	.L29
+ 250 00b4 007C     		ldrb	r0, [r0, #16]
+ 251 00b6 6A46     		mov	r2, sp
+ 252 00b8 911D     		adds	r1, r2, #6
+ 253 00ba 9847     		blx	r3
+ 254 00bc B8E7     		b	.L17
+ 255              	.L29:
+ 256 00be 2100     		movs	r1, r4
+ 257 00c0 FFF7FEFF 		bl	USBD_CtlError
+ 258 00c4 C1E7     		b	.L9
+ 259              	.L24:
+ 260 00c6 AC23     		movs	r3, #172
+ 261 00c8 9B00     		lsls	r3, r3, #2
+ 262 00ca C358     		ldr	r3, [r0, r3]
+ 263 00cc DB68     		ldr	r3, [r3, #12]
+ 264 00ce 002B     		cmp	r3, #0
+ 265 00d0 04D0     		beq	.L30
+ 266 00d2 007C     		ldrb	r0, [r0, #16]
+ 267 00d4 6A46     		mov	r2, sp
+ 268 00d6 911D     		adds	r1, r2, #6
+ 269 00d8 9847     		blx	r3
+ 270 00da A9E7     		b	.L17
+ 271              	.L30:
+ 272 00dc 2100     		movs	r1, r4
+ 273 00de FFF7FEFF 		bl	USBD_CtlError
+ 274 00e2 B2E7     		b	.L9
+ 275              	.L23:
+ 276 00e4 AC23     		movs	r3, #172
+ 277 00e6 9B00     		lsls	r3, r3, #2
+ 278 00e8 C358     		ldr	r3, [r0, r3]
+ 279 00ea 1B69     		ldr	r3, [r3, #16]
+ 280 00ec 002B     		cmp	r3, #0
+ 281 00ee 04D0     		beq	.L31
+ 282 00f0 007C     		ldrb	r0, [r0, #16]
+ 283 00f2 6A46     		mov	r2, sp
+ 284 00f4 911D     		adds	r1, r2, #6
+ 285 00f6 9847     		blx	r3
+ 286 00f8 9AE7     		b	.L17
+ 287              	.L31:
+ 288 00fa 2100     		movs	r1, r4
+ 289 00fc FFF7FEFF 		bl	USBD_CtlError
+ 290 0100 A3E7     		b	.L9
+ 291              	.L22:
+ 292 0102 AC23     		movs	r3, #172
+ 293 0104 9B00     		lsls	r3, r3, #2
+ 294 0106 C358     		ldr	r3, [r0, r3]
+ARM GAS  /tmp/ccZo90TG.s 			page 6
+
+
+ 295 0108 5B69     		ldr	r3, [r3, #20]
+ 296 010a 002B     		cmp	r3, #0
+ 297 010c 04D0     		beq	.L32
+ 298 010e 007C     		ldrb	r0, [r0, #16]
+ 299 0110 6A46     		mov	r2, sp
+ 300 0112 911D     		adds	r1, r2, #6
+ 301 0114 9847     		blx	r3
+ 302 0116 8BE7     		b	.L17
+ 303              	.L32:
+ 304 0118 2100     		movs	r1, r4
+ 305 011a FFF7FEFF 		bl	USBD_CtlError
+ 306 011e 94E7     		b	.L9
+ 307              	.L20:
+ 308 0120 AC23     		movs	r3, #172
+ 309 0122 9B00     		lsls	r3, r3, #2
+ 310 0124 C358     		ldr	r3, [r0, r3]
+ 311 0126 9B69     		ldr	r3, [r3, #24]
+ 312 0128 002B     		cmp	r3, #0
+ 313 012a 04D0     		beq	.L33
+ 314 012c 007C     		ldrb	r0, [r0, #16]
+ 315 012e 6A46     		mov	r2, sp
+ 316 0130 911D     		adds	r1, r2, #6
+ 317 0132 9847     		blx	r3
+ 318 0134 7CE7     		b	.L17
+ 319              	.L33:
+ 320 0136 2100     		movs	r1, r4
+ 321 0138 FFF7FEFF 		bl	USBD_CtlError
+ 322 013c 85E7     		b	.L9
+ 323              	.L19:
+ 324 013e 2100     		movs	r1, r4
+ 325 0140 FFF7FEFF 		bl	USBD_CtlError
+ 326 0144 81E7     		b	.L9
+ 327              	.L13:
+ 328 0146 037C     		ldrb	r3, [r0, #16]
+ 329 0148 002B     		cmp	r3, #0
+ 330 014a 07D1     		bne	.L34
+ 331 014c AD23     		movs	r3, #173
+ 332 014e 9B00     		lsls	r3, r3, #2
+ 333 0150 C358     		ldr	r3, [r0, r3]
+ 334 0152 5B6B     		ldr	r3, [r3, #52]
+ 335 0154 6A46     		mov	r2, sp
+ 336 0156 901D     		adds	r0, r2, #6
+ 337 0158 9847     		blx	r3
+ 338 015a 69E7     		b	.L17
+ 339              	.L34:
+ 340 015c 2100     		movs	r1, r4
+ 341 015e FFF7FEFF 		bl	USBD_CtlError
+ 342 0162 72E7     		b	.L9
+ 343              	.L11:
+ 344 0164 037C     		ldrb	r3, [r0, #16]
+ 345 0166 002B     		cmp	r3, #0
+ 346 0168 09D1     		bne	.L35
+ 347 016a AD23     		movs	r3, #173
+ 348 016c 9B00     		lsls	r3, r3, #2
+ 349 016e C358     		ldr	r3, [r0, r3]
+ 350 0170 1B6B     		ldr	r3, [r3, #48]
+ 351 0172 6A46     		mov	r2, sp
+ARM GAS  /tmp/ccZo90TG.s 			page 7
+
+
+ 352 0174 901D     		adds	r0, r2, #6
+ 353 0176 9847     		blx	r3
+ 354 0178 0723     		movs	r3, #7
+ 355 017a 4370     		strb	r3, [r0, #1]
+ 356 017c 58E7     		b	.L17
+ 357              	.L35:
+ 358 017e 2100     		movs	r1, r4
+ 359 0180 FFF7FEFF 		bl	USBD_CtlError
+ 360 0184 61E7     		b	.L9
+ 361              	.L10:
+ 362 0186 2100     		movs	r1, r4
+ 363 0188 2800     		movs	r0, r5
+ 364 018a FFF7FEFF 		bl	USBD_CtlError
+ 365 018e 5CE7     		b	.L9
+ 366              	.L40:
+ 367 0190 191C     		adds	r1, r3, #0
+ 368 0192 9342     		cmp	r3, r2
+ 369 0194 00D9     		bls	.L38
+ 370 0196 111C     		adds	r1, r2, #0
+ 371              	.L38:
+ 372 0198 8AB2     		uxth	r2, r1
+ 373 019a 6B46     		mov	r3, sp
+ 374 019c D980     		strh	r1, [r3, #6]
+ 375 019e 0100     		movs	r1, r0
+ 376 01a0 2800     		movs	r0, r5
+ 377 01a2 FFF7FEFF 		bl	USBD_CtlSendData
+ 378 01a6 4CE7     		b	.L37
+ 379              	.L41:
+ 380 01a8 2800     		movs	r0, r5
+ 381 01aa FFF7FEFF 		bl	USBD_CtlSendStatus
+ 382 01ae 4CE7     		b	.L9
+ 383              	.L43:
+ 384              		.align	2
+ 385              	.L42:
+ 386 01b0 00000000 		.word	.L12
+ 387 01b4 20000000 		.word	.L21
+ 389              		.section	.text.USBD_SetAddress,"ax",%progbits
+ 390              		.align	1
+ 391              		.syntax unified
+ 392              		.code	16
+ 393              		.thumb_func
+ 395              	USBD_SetAddress:
+ 396              		@ args = 0, pretend = 0, frame = 0
+ 397              		@ frame_needed = 0, uses_anonymous_args = 0
+ 398 0000 70B5     		push	{r4, r5, r6, lr}
+ 399 0002 0400     		movs	r4, r0
+ 400 0004 8B88     		ldrh	r3, [r1, #4]
+ 401 0006 002B     		cmp	r3, #0
+ 402 0008 23D1     		bne	.L45
+ 403 000a CB88     		ldrh	r3, [r1, #6]
+ 404 000c 002B     		cmp	r3, #0
+ 405 000e 20D1     		bne	.L45
+ 406 0010 4B88     		ldrh	r3, [r1, #2]
+ 407 0012 7F2B     		cmp	r3, #127
+ 408 0014 1DD8     		bhi	.L45
+ 409 0016 7F25     		movs	r5, #127
+ 410 0018 1D40     		ands	r5, r3
+ARM GAS  /tmp/ccZo90TG.s 			page 8
+
+
+ 411 001a A723     		movs	r3, #167
+ 412 001c 9B00     		lsls	r3, r3, #2
+ 413 001e C35C     		ldrb	r3, [r0, r3]
+ 414 0020 032B     		cmp	r3, #3
+ 415 0022 0ED0     		beq	.L49
+ 416 0024 0D4B     		ldr	r3, .L50
+ 417 0026 C554     		strb	r5, [r0, r3]
+ 418 0028 2900     		movs	r1, r5
+ 419 002a FFF7FEFF 		bl	USBD_LL_SetUSBAddress
+ 420 002e 2000     		movs	r0, r4
+ 421 0030 FFF7FEFF 		bl	USBD_CtlSendStatus
+ 422 0034 002D     		cmp	r5, #0
+ 423 0036 07D0     		beq	.L48
+ 424 0038 A723     		movs	r3, #167
+ 425 003a 9B00     		lsls	r3, r3, #2
+ 426 003c 0222     		movs	r2, #2
+ 427 003e E254     		strb	r2, [r4, r3]
+ 428 0040 0AE0     		b	.L44
+ 429              	.L49:
+ 430 0042 FFF7FEFF 		bl	USBD_CtlError
+ 431 0046 07E0     		b	.L44
+ 432              	.L48:
+ 433 0048 A723     		movs	r3, #167
+ 434 004a 9B00     		lsls	r3, r3, #2
+ 435 004c 0122     		movs	r2, #1
+ 436 004e E254     		strb	r2, [r4, r3]
+ 437 0050 02E0     		b	.L44
+ 438              	.L45:
+ 439 0052 2000     		movs	r0, r4
+ 440 0054 FFF7FEFF 		bl	USBD_CtlError
+ 441              	.L44:
+ 442              		@ sp needed
+ 443 0058 70BD     		pop	{r4, r5, r6, pc}
+ 444              	.L51:
+ 445 005a C046     		.align	2
+ 446              	.L50:
+ 447 005c 9E020000 		.word	670
+ 449              		.section	.text.USBD_SetConfig,"ax",%progbits
+ 450              		.align	1
+ 451              		.syntax unified
+ 452              		.code	16
+ 453              		.thumb_func
+ 455              	USBD_SetConfig:
+ 456              		@ args = 0, pretend = 0, frame = 0
+ 457              		@ frame_needed = 0, uses_anonymous_args = 0
+ 458 0000 70B5     		push	{r4, r5, r6, lr}
+ 459 0002 0400     		movs	r4, r0
+ 460 0004 0D00     		movs	r5, r1
+ 461 0006 8978     		ldrb	r1, [r1, #2]
+ 462 0008 2A4B     		ldr	r3, .L68
+ 463 000a 1970     		strb	r1, [r3]
+ 464 000c 0129     		cmp	r1, #1
+ 465 000e 0FD8     		bhi	.L64
+ 466 0010 A723     		movs	r3, #167
+ 467 0012 9B00     		lsls	r3, r3, #2
+ 468 0014 C35C     		ldrb	r3, [r0, r3]
+ 469 0016 022B     		cmp	r3, #2
+ARM GAS  /tmp/ccZo90TG.s 			page 9
+
+
+ 470 0018 0ED0     		beq	.L55
+ 471 001a 032B     		cmp	r3, #3
+ 472 001c 23D0     		beq	.L56
+ 473 001e 2900     		movs	r1, r5
+ 474 0020 FFF7FEFF 		bl	USBD_CtlError
+ 475 0024 234B     		ldr	r3, .L68
+ 476 0026 1978     		ldrb	r1, [r3]
+ 477 0028 2000     		movs	r0, r4
+ 478 002a FFF7FEFF 		bl	USBD_ClrClassConfig
+ 479 002e 02E0     		b	.L52
+ 480              	.L64:
+ 481 0030 2900     		movs	r1, r5
+ 482 0032 FFF7FEFF 		bl	USBD_CtlError
+ 483              	.L52:
+ 484              		@ sp needed
+ 485 0036 70BD     		pop	{r4, r5, r6, pc}
+ 486              	.L55:
+ 487 0038 0029     		cmp	r1, #0
+ 488 003a 11D0     		beq	.L58
+ 489 003c 4160     		str	r1, [r0, #4]
+ 490 003e A723     		movs	r3, #167
+ 491 0040 9B00     		lsls	r3, r3, #2
+ 492 0042 0322     		movs	r2, #3
+ 493 0044 C254     		strb	r2, [r0, r3]
+ 494 0046 FFF7FEFF 		bl	USBD_SetClassConfig
+ 495 004a 0228     		cmp	r0, #2
+ 496 004c 03D0     		beq	.L65
+ 497 004e 2000     		movs	r0, r4
+ 498 0050 FFF7FEFF 		bl	USBD_CtlSendStatus
+ 499 0054 EFE7     		b	.L52
+ 500              	.L65:
+ 501 0056 2900     		movs	r1, r5
+ 502 0058 2000     		movs	r0, r4
+ 503 005a FFF7FEFF 		bl	USBD_CtlError
+ 504 005e EAE7     		b	.L52
+ 505              	.L58:
+ 506 0060 FFF7FEFF 		bl	USBD_CtlSendStatus
+ 507 0064 E7E7     		b	.L52
+ 508              	.L56:
+ 509 0066 0029     		cmp	r1, #0
+ 510 0068 11D0     		beq	.L66
+ 511 006a 4368     		ldr	r3, [r0, #4]
+ 512 006c 9942     		cmp	r1, r3
+ 513 006e 1ED0     		beq	.L61
+ 514 0070 D9B2     		uxtb	r1, r3
+ 515 0072 FFF7FEFF 		bl	USBD_ClrClassConfig
+ 516 0076 0F4B     		ldr	r3, .L68
+ 517 0078 1978     		ldrb	r1, [r3]
+ 518 007a 6160     		str	r1, [r4, #4]
+ 519 007c 2000     		movs	r0, r4
+ 520 007e FFF7FEFF 		bl	USBD_SetClassConfig
+ 521 0082 0228     		cmp	r0, #2
+ 522 0084 0ED0     		beq	.L67
+ 523 0086 2000     		movs	r0, r4
+ 524 0088 FFF7FEFF 		bl	USBD_CtlSendStatus
+ 525 008c D3E7     		b	.L52
+ 526              	.L66:
+ARM GAS  /tmp/ccZo90TG.s 			page 10
+
+
+ 527 008e A723     		movs	r3, #167
+ 528 0090 9B00     		lsls	r3, r3, #2
+ 529 0092 0222     		movs	r2, #2
+ 530 0094 C254     		strb	r2, [r0, r3]
+ 531 0096 4160     		str	r1, [r0, #4]
+ 532 0098 FFF7FEFF 		bl	USBD_ClrClassConfig
+ 533 009c 2000     		movs	r0, r4
+ 534 009e FFF7FEFF 		bl	USBD_CtlSendStatus
+ 535 00a2 C8E7     		b	.L52
+ 536              	.L67:
+ 537 00a4 2900     		movs	r1, r5
+ 538 00a6 2000     		movs	r0, r4
+ 539 00a8 FFF7FEFF 		bl	USBD_CtlError
+ 540 00ac C3E7     		b	.L52
+ 541              	.L61:
+ 542 00ae FFF7FEFF 		bl	USBD_CtlSendStatus
+ 543 00b2 C0E7     		b	.L52
+ 544              	.L69:
+ 545              		.align	2
+ 546              	.L68:
+ 547 00b4 00000000 		.word	cfgidx.0
+ 549              		.section	.text.USBD_GetConfig,"ax",%progbits
+ 550              		.align	1
+ 551              		.syntax unified
+ 552              		.code	16
+ 553              		.thumb_func
+ 555              	USBD_GetConfig:
+ 556              		@ args = 0, pretend = 0, frame = 0
+ 557              		@ frame_needed = 0, uses_anonymous_args = 0
+ 558 0000 10B5     		push	{r4, lr}
+ 559 0002 CB88     		ldrh	r3, [r1, #6]
+ 560 0004 012B     		cmp	r3, #1
+ 561 0006 0BD1     		bne	.L77
+ 562 0008 A723     		movs	r3, #167
+ 563 000a 9B00     		lsls	r3, r3, #2
+ 564 000c C35C     		ldrb	r3, [r0, r3]
+ 565 000e 022B     		cmp	r3, #2
+ 566 0010 09D9     		bls	.L78
+ 567 0012 032B     		cmp	r3, #3
+ 568 0014 11D1     		bne	.L75
+ 569 0016 011D     		adds	r1, r0, #4
+ 570 0018 0122     		movs	r2, #1
+ 571 001a FFF7FEFF 		bl	USBD_CtlSendData
+ 572 001e 01E0     		b	.L70
+ 573              	.L77:
+ 574 0020 FFF7FEFF 		bl	USBD_CtlError
+ 575              	.L70:
+ 576              		@ sp needed
+ 577 0024 10BD     		pop	{r4, pc}
+ 578              	.L78:
+ 579 0026 002B     		cmp	r3, #0
+ 580 0028 07D0     		beq	.L75
+ 581 002a 0023     		movs	r3, #0
+ 582 002c 8360     		str	r3, [r0, #8]
+ 583 002e 0100     		movs	r1, r0
+ 584 0030 0831     		adds	r1, r1, #8
+ 585 0032 0122     		movs	r2, #1
+ARM GAS  /tmp/ccZo90TG.s 			page 11
+
+
+ 586 0034 FFF7FEFF 		bl	USBD_CtlSendData
+ 587 0038 F4E7     		b	.L70
+ 588              	.L75:
+ 589 003a FFF7FEFF 		bl	USBD_CtlError
+ 590 003e F1E7     		b	.L70
+ 592              		.section	.text.USBD_GetStatus,"ax",%progbits
+ 593              		.align	1
+ 594              		.syntax unified
+ 595              		.code	16
+ 596              		.thumb_func
+ 598              	USBD_GetStatus:
+ 599              		@ args = 0, pretend = 0, frame = 0
+ 600              		@ frame_needed = 0, uses_anonymous_args = 0
+ 601 0000 10B5     		push	{r4, lr}
+ 602 0002 A723     		movs	r3, #167
+ 603 0004 9B00     		lsls	r3, r3, #2
+ 604 0006 C35C     		ldrb	r3, [r0, r3]
+ 605 0008 013B     		subs	r3, r3, #1
+ 606 000a 022B     		cmp	r3, #2
+ 607 000c 14D8     		bhi	.L80
+ 608 000e CB88     		ldrh	r3, [r1, #6]
+ 609 0010 022B     		cmp	r3, #2
+ 610 0012 0ED1     		bne	.L84
+ 611 0014 0123     		movs	r3, #1
+ 612 0016 C360     		str	r3, [r0, #12]
+ 613 0018 A923     		movs	r3, #169
+ 614 001a 9B00     		lsls	r3, r3, #2
+ 615 001c C358     		ldr	r3, [r0, r3]
+ 616 001e 002B     		cmp	r3, #0
+ 617 0020 01D0     		beq	.L83
+ 618 0022 0323     		movs	r3, #3
+ 619 0024 C360     		str	r3, [r0, #12]
+ 620              	.L83:
+ 621 0026 0100     		movs	r1, r0
+ 622 0028 0C31     		adds	r1, r1, #12
+ 623 002a 0222     		movs	r2, #2
+ 624 002c FFF7FEFF 		bl	USBD_CtlSendData
+ 625              	.L79:
+ 626              		@ sp needed
+ 627 0030 10BD     		pop	{r4, pc}
+ 628              	.L84:
+ 629 0032 FFF7FEFF 		bl	USBD_CtlError
+ 630 0036 FBE7     		b	.L79
+ 631              	.L80:
+ 632 0038 FFF7FEFF 		bl	USBD_CtlError
+ 633 003c F8E7     		b	.L79
+ 635              		.section	.text.USBD_ClrFeature,"ax",%progbits
+ 636              		.align	1
+ 637              		.syntax unified
+ 638              		.code	16
+ 639              		.thumb_func
+ 641              	USBD_ClrFeature:
+ 642              		@ args = 0, pretend = 0, frame = 0
+ 643              		@ frame_needed = 0, uses_anonymous_args = 0
+ 644 0000 10B5     		push	{r4, lr}
+ 645 0002 A723     		movs	r3, #167
+ 646 0004 9B00     		lsls	r3, r3, #2
+ARM GAS  /tmp/ccZo90TG.s 			page 12
+
+
+ 647 0006 C35C     		ldrb	r3, [r0, r3]
+ 648 0008 013B     		subs	r3, r3, #1
+ 649 000a 022B     		cmp	r3, #2
+ 650 000c 0AD8     		bhi	.L86
+ 651 000e 4B88     		ldrh	r3, [r1, #2]
+ 652 0010 012B     		cmp	r3, #1
+ 653 0012 00D0     		beq	.L88
+ 654              	.L85:
+ 655              		@ sp needed
+ 656 0014 10BD     		pop	{r4, pc}
+ 657              	.L88:
+ 658 0016 A923     		movs	r3, #169
+ 659 0018 9B00     		lsls	r3, r3, #2
+ 660 001a 0022     		movs	r2, #0
+ 661 001c C250     		str	r2, [r0, r3]
+ 662 001e FFF7FEFF 		bl	USBD_CtlSendStatus
+ 663 0022 F7E7     		b	.L85
+ 664              	.L86:
+ 665 0024 FFF7FEFF 		bl	USBD_CtlError
+ 666 0028 F4E7     		b	.L85
+ 668              		.section	.text.USBD_StdDevReq,"ax",%progbits
+ 669              		.align	1
+ 670              		.global	USBD_StdDevReq
+ 671              		.syntax unified
+ 672              		.code	16
+ 673              		.thumb_func
+ 675              	USBD_StdDevReq:
+ 676              		@ args = 0, pretend = 0, frame = 0
+ 677              		@ frame_needed = 0, uses_anonymous_args = 0
+ 678 0000 10B5     		push	{r4, lr}
+ 679 0002 0A78     		ldrb	r2, [r1]
+ 680 0004 6023     		movs	r3, #96
+ 681 0006 1340     		ands	r3, r2
+ 682 0008 202B     		cmp	r3, #32
+ 683 000a 06D0     		beq	.L90
+ 684 000c 402B     		cmp	r3, #64
+ 685 000e 04D0     		beq	.L90
+ 686 0010 002B     		cmp	r3, #0
+ 687 0012 09D0     		beq	.L91
+ 688 0014 FFF7FEFF 		bl	USBD_CtlError
+ 689 0018 04E0     		b	.L93
+ 690              	.L90:
+ 691 001a AD23     		movs	r3, #173
+ 692 001c 9B00     		lsls	r3, r3, #2
+ 693 001e C358     		ldr	r3, [r0, r3]
+ 694 0020 9B68     		ldr	r3, [r3, #8]
+ 695 0022 9847     		blx	r3
+ 696              	.L93:
+ 697 0024 0020     		movs	r0, #0
+ 698              		@ sp needed
+ 699 0026 10BD     		pop	{r4, pc}
+ 700              	.L91:
+ 701 0028 4B78     		ldrb	r3, [r1, #1]
+ 702 002a 092B     		cmp	r3, #9
+ 703 002c 18D8     		bhi	.L94
+ 704 002e 9B00     		lsls	r3, r3, #2
+ 705 0030 0D4A     		ldr	r2, .L104
+ARM GAS  /tmp/ccZo90TG.s 			page 13
+
+
+ 706 0032 D358     		ldr	r3, [r2, r3]
+ 707 0034 9F46     		mov	pc, r3
+ 708              		.section	.rodata.USBD_StdDevReq,"a",%progbits
+ 709              		.align	2
+ 710              	.L96:
+ 711 0000 4E000000 		.word	.L102
+ 712 0004 5A000000 		.word	.L101
+ 713 0008 60000000 		.word	.L94
+ 714 000c 54000000 		.word	.L100
+ 715 0010 60000000 		.word	.L94
+ 716 0014 3C000000 		.word	.L99
+ 717 0018 36000000 		.word	.L98
+ 718 001c 60000000 		.word	.L94
+ 719 0020 48000000 		.word	.L97
+ 720 0024 42000000 		.word	.L95
+ 721              		.section	.text.USBD_StdDevReq
+ 722              	.L98:
+ 723 0036 FFF7FEFF 		bl	USBD_GetDescriptor
+ 724 003a F3E7     		b	.L93
+ 725              	.L99:
+ 726 003c FFF7FEFF 		bl	USBD_SetAddress
+ 727 0040 F0E7     		b	.L93
+ 728              	.L95:
+ 729 0042 FFF7FEFF 		bl	USBD_SetConfig
+ 730 0046 EDE7     		b	.L93
+ 731              	.L97:
+ 732 0048 FFF7FEFF 		bl	USBD_GetConfig
+ 733 004c EAE7     		b	.L93
+ 734              	.L102:
+ 735 004e FFF7FEFF 		bl	USBD_GetStatus
+ 736 0052 E7E7     		b	.L93
+ 737              	.L100:
+ 738 0054 FFF7FEFF 		bl	USBD_SetFeature
+ 739 0058 E4E7     		b	.L93
+ 740              	.L101:
+ 741 005a FFF7FEFF 		bl	USBD_ClrFeature
+ 742 005e E1E7     		b	.L93
+ 743              	.L94:
+ 744 0060 FFF7FEFF 		bl	USBD_CtlError
+ 745 0064 DEE7     		b	.L93
+ 746              	.L105:
+ 747 0066 C046     		.align	2
+ 748              	.L104:
+ 749 0068 00000000 		.word	.L96
+ 751              		.section	.text.USBD_StdItfReq,"ax",%progbits
+ 752              		.align	1
+ 753              		.global	USBD_StdItfReq
+ 754              		.syntax unified
+ 755              		.code	16
+ 756              		.thumb_func
+ 758              	USBD_StdItfReq:
+ 759              		@ args = 0, pretend = 0, frame = 0
+ 760              		@ frame_needed = 0, uses_anonymous_args = 0
+ 761 0000 70B5     		push	{r4, r5, r6, lr}
+ 762 0002 0500     		movs	r5, r0
+ 763 0004 0C00     		movs	r4, r1
+ 764 0006 0A78     		ldrb	r2, [r1]
+ARM GAS  /tmp/ccZo90TG.s 			page 14
+
+
+ 765 0008 6023     		movs	r3, #96
+ 766 000a 1340     		ands	r3, r2
+ 767 000c 202B     		cmp	r3, #32
+ 768 000e 07D0     		beq	.L107
+ 769 0010 402B     		cmp	r3, #64
+ 770 0012 05D0     		beq	.L107
+ 771 0014 002B     		cmp	r3, #0
+ 772 0016 03D0     		beq	.L107
+ 773 0018 FFF7FEFF 		bl	USBD_CtlError
+ 774              	.L111:
+ 775 001c 0020     		movs	r0, #0
+ 776              		@ sp needed
+ 777 001e 70BD     		pop	{r4, r5, r6, pc}
+ 778              	.L107:
+ 779 0020 A723     		movs	r3, #167
+ 780 0022 9B00     		lsls	r3, r3, #2
+ 781 0024 EB5C     		ldrb	r3, [r5, r3]
+ 782 0026 013B     		subs	r3, r3, #1
+ 783 0028 022B     		cmp	r3, #2
+ 784 002a 17D8     		bhi	.L109
+ 785 002c 2379     		ldrb	r3, [r4, #4]
+ 786 002e 012B     		cmp	r3, #1
+ 787 0030 0FD8     		bhi	.L110
+ 788 0032 AD23     		movs	r3, #173
+ 789 0034 9B00     		lsls	r3, r3, #2
+ 790 0036 EB58     		ldr	r3, [r5, r3]
+ 791 0038 9B68     		ldr	r3, [r3, #8]
+ 792 003a 2100     		movs	r1, r4
+ 793 003c 2800     		movs	r0, r5
+ 794 003e 9847     		blx	r3
+ 795 0040 E388     		ldrh	r3, [r4, #6]
+ 796 0042 002B     		cmp	r3, #0
+ 797 0044 EAD1     		bne	.L111
+ 798 0046 0028     		cmp	r0, #0
+ 799 0048 E8D1     		bne	.L111
+ 800 004a 2800     		movs	r0, r5
+ 801 004c FFF7FEFF 		bl	USBD_CtlSendStatus
+ 802 0050 E4E7     		b	.L111
+ 803              	.L110:
+ 804 0052 2100     		movs	r1, r4
+ 805 0054 2800     		movs	r0, r5
+ 806 0056 FFF7FEFF 		bl	USBD_CtlError
+ 807 005a DFE7     		b	.L111
+ 808              	.L109:
+ 809 005c 2100     		movs	r1, r4
+ 810 005e 2800     		movs	r0, r5
+ 811 0060 FFF7FEFF 		bl	USBD_CtlError
+ 812 0064 DAE7     		b	.L111
+ 814              		.section	.text.USBD_StdEPReq,"ax",%progbits
+ 815              		.align	1
+ 816              		.global	USBD_StdEPReq
+ 817              		.syntax unified
+ 818              		.code	16
+ 819              		.thumb_func
+ 821              	USBD_StdEPReq:
+ 822              		@ args = 0, pretend = 0, frame = 0
+ 823              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/ccZo90TG.s 			page 15
+
+
+ 824 0000 70B5     		push	{r4, r5, r6, lr}
+ 825 0002 0500     		movs	r5, r0
+ 826 0004 8888     		ldrh	r0, [r1, #4]
+ 827 0006 0A79     		ldrb	r2, [r1, #4]
+ 828 0008 0B78     		ldrb	r3, [r1]
+ 829 000a 6024     		movs	r4, #96
+ 830 000c 1C40     		ands	r4, r3
+ 831 000e 202C     		cmp	r4, #32
+ 832 0010 08D0     		beq	.L113
+ 833 0012 402C     		cmp	r4, #64
+ 834 0014 06D0     		beq	.L113
+ 835 0016 002C     		cmp	r4, #0
+ 836 0018 0DD0     		beq	.L114
+ 837 001a 2800     		movs	r0, r5
+ 838 001c FFF7FEFF 		bl	USBD_CtlError
+ 839 0020 0024     		movs	r4, #0
+ 840 0022 06E0     		b	.L116
+ 841              	.L113:
+ 842 0024 AD23     		movs	r3, #173
+ 843 0026 9B00     		lsls	r3, r3, #2
+ 844 0028 EB58     		ldr	r3, [r5, r3]
+ 845 002a 9B68     		ldr	r3, [r3, #8]
+ 846 002c 2800     		movs	r0, r5
+ 847 002e 9847     		blx	r3
+ 848 0030 0024     		movs	r4, #0
+ 849              	.L116:
+ 850 0032 2000     		movs	r0, r4
+ 851              		@ sp needed
+ 852 0034 70BD     		pop	{r4, r5, r6, pc}
+ 853              	.L114:
+ 854 0036 202C     		cmp	r4, #32
+ 855 0038 0AD0     		beq	.L152
+ 856 003a 4E78     		ldrb	r6, [r1, #1]
+ 857 003c 012E     		cmp	r6, #1
+ 858 003e 3ED0     		beq	.L118
+ 859 0040 032E     		cmp	r6, #3
+ 860 0042 0DD0     		beq	.L119
+ 861 0044 002E     		cmp	r6, #0
+ 862 0046 64D0     		beq	.L120
+ 863 0048 2800     		movs	r0, r5
+ 864 004a FFF7FEFF 		bl	USBD_CtlError
+ 865 004e F0E7     		b	.L116
+ 866              	.L152:
+ 867 0050 AD23     		movs	r3, #173
+ 868 0052 9B00     		lsls	r3, r3, #2
+ 869 0054 EB58     		ldr	r3, [r5, r3]
+ 870 0056 9B68     		ldr	r3, [r3, #8]
+ 871 0058 2800     		movs	r0, r5
+ 872 005a 9847     		blx	r3
+ 873 005c 0400     		movs	r4, r0
+ 874 005e E8E7     		b	.L116
+ 875              	.L119:
+ 876 0060 A723     		movs	r3, #167
+ 877 0062 9B00     		lsls	r3, r3, #2
+ 878 0064 EB5C     		ldrb	r3, [r5, r3]
+ 879 0066 022B     		cmp	r3, #2
+ 880 0068 05D0     		beq	.L122
+ARM GAS  /tmp/ccZo90TG.s 			page 16
+
+
+ 881 006a 032B     		cmp	r3, #3
+ 882 006c 14D0     		beq	.L123
+ 883 006e 2800     		movs	r0, r5
+ 884 0070 FFF7FEFF 		bl	USBD_CtlError
+ 885 0074 DDE7     		b	.L116
+ 886              	.L122:
+ 887 0076 002A     		cmp	r2, #0
+ 888 0078 01D0     		beq	.L125
+ 889 007a 802A     		cmp	r2, #128
+ 890 007c 03D1     		bne	.L153
+ 891              	.L125:
+ 892 007e 2800     		movs	r0, r5
+ 893 0080 FFF7FEFF 		bl	USBD_CtlError
+ 894 0084 D5E7     		b	.L116
+ 895              	.L153:
+ 896 0086 1100     		movs	r1, r2
+ 897 0088 2800     		movs	r0, r5
+ 898 008a FFF7FEFF 		bl	USBD_LL_StallEP
+ 899 008e 8021     		movs	r1, #128
+ 900 0090 2800     		movs	r0, r5
+ 901 0092 FFF7FEFF 		bl	USBD_LL_StallEP
+ 902 0096 CCE7     		b	.L116
+ 903              	.L123:
+ 904 0098 4B88     		ldrh	r3, [r1, #2]
+ 905 009a 002B     		cmp	r3, #0
+ 906 009c 06D1     		bne	.L126
+ 907 009e 002A     		cmp	r2, #0
+ 908 00a0 04D0     		beq	.L126
+ 909 00a2 802A     		cmp	r2, #128
+ 910 00a4 02D0     		beq	.L126
+ 911 00a6 CB88     		ldrh	r3, [r1, #6]
+ 912 00a8 002B     		cmp	r3, #0
+ 913 00aa 03D0     		beq	.L154
+ 914              	.L126:
+ 915 00ac 2800     		movs	r0, r5
+ 916 00ae FFF7FEFF 		bl	USBD_CtlSendStatus
+ 917 00b2 BEE7     		b	.L116
+ 918              	.L154:
+ 919 00b4 1100     		movs	r1, r2
+ 920 00b6 2800     		movs	r0, r5
+ 921 00b8 FFF7FEFF 		bl	USBD_LL_StallEP
+ 922 00bc F6E7     		b	.L126
+ 923              	.L118:
+ 924 00be A723     		movs	r3, #167
+ 925 00c0 9B00     		lsls	r3, r3, #2
+ 926 00c2 EB5C     		ldrb	r3, [r5, r3]
+ 927 00c4 022B     		cmp	r3, #2
+ 928 00c6 05D0     		beq	.L127
+ 929 00c8 032B     		cmp	r3, #3
+ 930 00ca 14D0     		beq	.L128
+ 931 00cc 2800     		movs	r0, r5
+ 932 00ce FFF7FEFF 		bl	USBD_CtlError
+ 933 00d2 AEE7     		b	.L116
+ 934              	.L127:
+ 935 00d4 002A     		cmp	r2, #0
+ 936 00d6 01D0     		beq	.L130
+ 937 00d8 802A     		cmp	r2, #128
+ARM GAS  /tmp/ccZo90TG.s 			page 17
+
+
+ 938 00da 03D1     		bne	.L155
+ 939              	.L130:
+ 940 00dc 2800     		movs	r0, r5
+ 941 00de FFF7FEFF 		bl	USBD_CtlError
+ 942 00e2 A6E7     		b	.L116
+ 943              	.L155:
+ 944 00e4 1100     		movs	r1, r2
+ 945 00e6 2800     		movs	r0, r5
+ 946 00e8 FFF7FEFF 		bl	USBD_LL_StallEP
+ 947 00ec 8021     		movs	r1, #128
+ 948 00ee 2800     		movs	r0, r5
+ 949 00f0 FFF7FEFF 		bl	USBD_LL_StallEP
+ 950 00f4 9DE7     		b	.L116
+ 951              	.L128:
+ 952 00f6 4B88     		ldrh	r3, [r1, #2]
+ 953 00f8 002B     		cmp	r3, #0
+ 954 00fa 9AD1     		bne	.L116
+ 955 00fc 5306     		lsls	r3, r2, #25
+ 956 00fe 03D1     		bne	.L156
+ 957              	.L131:
+ 958 0100 2800     		movs	r0, r5
+ 959 0102 FFF7FEFF 		bl	USBD_CtlSendStatus
+ 960 0106 94E7     		b	.L116
+ 961              	.L156:
+ 962 0108 1100     		movs	r1, r2
+ 963 010a 2800     		movs	r0, r5
+ 964 010c FFF7FEFF 		bl	USBD_LL_ClearStallEP
+ 965 0110 F6E7     		b	.L131
+ 966              	.L120:
+ 967 0112 A723     		movs	r3, #167
+ 968 0114 9B00     		lsls	r3, r3, #2
+ 969 0116 EB5C     		ldrb	r3, [r5, r3]
+ 970 0118 022B     		cmp	r3, #2
+ 971 011a 06D0     		beq	.L132
+ 972 011c 032B     		cmp	r3, #3
+ 973 011e 29D0     		beq	.L133
+ 974 0120 2800     		movs	r0, r5
+ 975 0122 FFF7FEFF 		bl	USBD_CtlError
+ 976 0126 3400     		movs	r4, r6
+ 977 0128 83E7     		b	.L116
+ 978              	.L132:
+ 979 012a 002A     		cmp	r2, #0
+ 980 012c 01D0     		beq	.L135
+ 981 012e 802A     		cmp	r2, #128
+ 982 0130 12D1     		bne	.L157
+ 983              	.L135:
+ 984 0132 0006     		lsls	r0, r0, #24
+ 985 0134 15D4     		bmi	.L158
+ 986 0136 7F23     		movs	r3, #127
+ 987 0138 1340     		ands	r3, r2
+ 988 013a 9900     		lsls	r1, r3, #2
+ 989 013c C918     		adds	r1, r1, r3
+ 990 013e 8900     		lsls	r1, r1, #2
+ 991 0140 5131     		adds	r1, r1, #81
+ 992 0142 FF31     		adds	r1, r1, #255
+ 993 0144 6918     		adds	r1, r5, r1
+ 994 0146 0431     		adds	r1, r1, #4
+ARM GAS  /tmp/ccZo90TG.s 			page 18
+
+
+ 995              	.L137:
+ 996 0148 0023     		movs	r3, #0
+ 997 014a 0B60     		str	r3, [r1]
+ 998 014c 0222     		movs	r2, #2
+ 999 014e 2800     		movs	r0, r5
+ 1000 0150 FFF7FEFF 		bl	USBD_CtlSendData
+ 1001 0154 3400     		movs	r4, r6
+ 1002 0156 6CE7     		b	.L116
+ 1003              	.L157:
+ 1004 0158 2800     		movs	r0, r5
+ 1005 015a FFF7FEFF 		bl	USBD_CtlError
+ 1006 015e 3400     		movs	r4, r6
+ 1007 0160 67E7     		b	.L116
+ 1008              	.L158:
+ 1009 0162 7F23     		movs	r3, #127
+ 1010 0164 1340     		ands	r3, r2
+ 1011 0166 9900     		lsls	r1, r3, #2
+ 1012 0168 C918     		adds	r1, r1, r3
+ 1013 016a 8900     		lsls	r1, r1, #2
+ 1014 016c 1031     		adds	r1, r1, #16
+ 1015 016e 6918     		adds	r1, r5, r1
+ 1016 0170 0431     		adds	r1, r1, #4
+ 1017 0172 E9E7     		b	.L137
+ 1018              	.L133:
+ 1019 0174 44B2     		sxtb	r4, r0
+ 1020 0176 0006     		lsls	r0, r0, #24
+ 1021 0178 22D4     		bmi	.L159
+ 1022 017a 0F20     		movs	r0, #15
+ 1023 017c 1040     		ands	r0, r2
+ 1024 017e 8300     		lsls	r3, r0, #2
+ 1025 0180 1B18     		adds	r3, r3, r0
+ 1026 0182 9B00     		lsls	r3, r3, #2
+ 1027 0184 EB18     		adds	r3, r5, r3
+ 1028 0186 5933     		adds	r3, r3, #89
+ 1029 0188 FF33     		adds	r3, r3, #255
+ 1030 018a 1B68     		ldr	r3, [r3]
+ 1031 018c 002B     		cmp	r3, #0
+ 1032 018e 25D0     		beq	.L160
+ 1033              	.L139:
+ 1034 0190 002C     		cmp	r4, #0
+ 1035 0192 28DB     		blt	.L161
+ 1036 0194 7F23     		movs	r3, #127
+ 1037 0196 1340     		ands	r3, r2
+ 1038 0198 9C00     		lsls	r4, r3, #2
+ 1039 019a E418     		adds	r4, r4, r3
+ 1040 019c A400     		lsls	r4, r4, #2
+ 1041 019e 5134     		adds	r4, r4, #81
+ 1042 01a0 FF34     		adds	r4, r4, #255
+ 1043 01a2 2C19     		adds	r4, r5, r4
+ 1044 01a4 0434     		adds	r4, r4, #4
+ 1045              	.L141:
+ 1046 01a6 002A     		cmp	r2, #0
+ 1047 01a8 01D0     		beq	.L142
+ 1048 01aa 802A     		cmp	r2, #128
+ 1049 01ac 24D1     		bne	.L143
+ 1050              	.L142:
+ 1051 01ae 0023     		movs	r3, #0
+ARM GAS  /tmp/ccZo90TG.s 			page 19
+
+
+ 1052 01b0 2360     		str	r3, [r4]
+ 1053              	.L144:
+ 1054 01b2 0222     		movs	r2, #2
+ 1055 01b4 2100     		movs	r1, r4
+ 1056 01b6 2800     		movs	r0, r5
+ 1057 01b8 FFF7FEFF 		bl	USBD_CtlSendData
+ 1058 01bc 3400     		movs	r4, r6
+ 1059 01be 38E7     		b	.L116
+ 1060              	.L159:
+ 1061 01c0 0F20     		movs	r0, #15
+ 1062 01c2 1040     		ands	r0, r2
+ 1063 01c4 8300     		lsls	r3, r0, #2
+ 1064 01c6 1B18     		adds	r3, r3, r0
+ 1065 01c8 9B00     		lsls	r3, r3, #2
+ 1066 01ca EB18     		adds	r3, r5, r3
+ 1067 01cc 9B69     		ldr	r3, [r3, #24]
+ 1068 01ce 002B     		cmp	r3, #0
+ 1069 01d0 DED1     		bne	.L139
+ 1070 01d2 2800     		movs	r0, r5
+ 1071 01d4 FFF7FEFF 		bl	USBD_CtlError
+ 1072 01d8 3400     		movs	r4, r6
+ 1073 01da 2AE7     		b	.L116
+ 1074              	.L160:
+ 1075 01dc 2800     		movs	r0, r5
+ 1076 01de FFF7FEFF 		bl	USBD_CtlError
+ 1077 01e2 3400     		movs	r4, r6
+ 1078 01e4 25E7     		b	.L116
+ 1079              	.L161:
+ 1080 01e6 7F23     		movs	r3, #127
+ 1081 01e8 1340     		ands	r3, r2
+ 1082 01ea 9C00     		lsls	r4, r3, #2
+ 1083 01ec E418     		adds	r4, r4, r3
+ 1084 01ee A400     		lsls	r4, r4, #2
+ 1085 01f0 1034     		adds	r4, r4, #16
+ 1086 01f2 2C19     		adds	r4, r5, r4
+ 1087 01f4 0434     		adds	r4, r4, #4
+ 1088 01f6 D6E7     		b	.L141
+ 1089              	.L143:
+ 1090 01f8 1100     		movs	r1, r2
+ 1091 01fa 2800     		movs	r0, r5
+ 1092 01fc FFF7FEFF 		bl	USBD_LL_IsStallEP
+ 1093 0200 0028     		cmp	r0, #0
+ 1094 0202 02D0     		beq	.L145
+ 1095 0204 0123     		movs	r3, #1
+ 1096 0206 2360     		str	r3, [r4]
+ 1097 0208 D3E7     		b	.L144
+ 1098              	.L145:
+ 1099 020a 0023     		movs	r3, #0
+ 1100 020c 2360     		str	r3, [r4]
+ 1101 020e D0E7     		b	.L144
+ 1103              		.section	.text.USBD_GetString,"ax",%progbits
+ 1104              		.align	1
+ 1105              		.global	USBD_GetString
+ 1106              		.syntax unified
+ 1107              		.code	16
+ 1108              		.thumb_func
+ 1110              	USBD_GetString:
+ARM GAS  /tmp/ccZo90TG.s 			page 20
+
+
+ 1111              		@ args = 0, pretend = 0, frame = 0
+ 1112              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1113 0000 70B5     		push	{r4, r5, r6, lr}
+ 1114 0002 0400     		movs	r4, r0
+ 1115 0004 0D00     		movs	r5, r1
+ 1116 0006 1600     		movs	r6, r2
+ 1117 0008 0028     		cmp	r0, #0
+ 1118 000a 16D0     		beq	.L162
+ 1119 000c FFF7FEFF 		bl	USBD_GetLen
+ 1120 0010 0130     		adds	r0, r0, #1
+ 1121 0012 4300     		lsls	r3, r0, #1
+ 1122 0014 9BB2     		uxth	r3, r3
+ 1123 0016 3380     		strh	r3, [r6]
+ 1124 0018 2B70     		strb	r3, [r5]
+ 1125 001a 0323     		movs	r3, #3
+ 1126 001c 6B70     		strb	r3, [r5, #1]
+ 1127 001e 013B     		subs	r3, r3, #1
+ 1128 0020 08E0     		b	.L164
+ 1129              	.L165:
+ 1130 0022 0134     		adds	r4, r4, #1
+ 1131 0024 5A1C     		adds	r2, r3, #1
+ 1132 0026 D2B2     		uxtb	r2, r2
+ 1133 0028 E854     		strb	r0, [r5, r3]
+ 1134 002a 0233     		adds	r3, r3, #2
+ 1135 002c DBB2     		uxtb	r3, r3
+ 1136 002e AA18     		adds	r2, r5, r2
+ 1137 0030 0021     		movs	r1, #0
+ 1138 0032 1170     		strb	r1, [r2]
+ 1139              	.L164:
+ 1140 0034 2078     		ldrb	r0, [r4]
+ 1141 0036 0028     		cmp	r0, #0
+ 1142 0038 F3D1     		bne	.L165
+ 1143              	.L162:
+ 1144              		@ sp needed
+ 1145 003a 70BD     		pop	{r4, r5, r6, pc}
+ 1147              		.section	.bss.cfgidx.0,"aw",%nobits
+ 1150              	cfgidx.0:
+ 1151 0000 00       		.space	1
+ 1152              		.ident	"GCC: (Arch Repository) 14.2.0"
+ARM GAS  /tmp/ccZo90TG.s 			page 21
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 usbd_ctlreq.c
+     /tmp/ccZo90TG.s:16     .text.USBD_GetLen:00000000 $t
+     /tmp/ccZo90TG.s:21     .text.USBD_GetLen:00000000 USBD_GetLen
+     /tmp/ccZo90TG.s:40     .text.USBD_SetFeature:00000000 $t
+     /tmp/ccZo90TG.s:45     .text.USBD_SetFeature:00000000 USBD_SetFeature
+     /tmp/ccZo90TG.s:64     .text.USBD_ParseSetupRequest:00000000 $t
+     /tmp/ccZo90TG.s:70     .text.USBD_ParseSetupRequest:00000000 USBD_ParseSetupRequest
+     /tmp/ccZo90TG.s:97     .text.USBD_CtlError:00000000 $t
+     /tmp/ccZo90TG.s:103    .text.USBD_CtlError:00000000 USBD_CtlError
+     /tmp/ccZo90TG.s:117    .text.USBD_GetDescriptor:00000000 $t
+     /tmp/ccZo90TG.s:122    .text.USBD_GetDescriptor:00000000 USBD_GetDescriptor
+     /tmp/ccZo90TG.s:143    .rodata.USBD_GetDescriptor:00000000 $d
+     /tmp/ccZo90TG.s:386    .text.USBD_GetDescriptor:000001b0 $d
+     /tmp/ccZo90TG.s:390    .text.USBD_SetAddress:00000000 $t
+     /tmp/ccZo90TG.s:395    .text.USBD_SetAddress:00000000 USBD_SetAddress
+     /tmp/ccZo90TG.s:447    .text.USBD_SetAddress:0000005c $d
+     /tmp/ccZo90TG.s:450    .text.USBD_SetConfig:00000000 $t
+     /tmp/ccZo90TG.s:455    .text.USBD_SetConfig:00000000 USBD_SetConfig
+     /tmp/ccZo90TG.s:547    .text.USBD_SetConfig:000000b4 $d
+     /tmp/ccZo90TG.s:1150   .bss.cfgidx.0:00000000 cfgidx.0
+     /tmp/ccZo90TG.s:550    .text.USBD_GetConfig:00000000 $t
+     /tmp/ccZo90TG.s:555    .text.USBD_GetConfig:00000000 USBD_GetConfig
+     /tmp/ccZo90TG.s:593    .text.USBD_GetStatus:00000000 $t
+     /tmp/ccZo90TG.s:598    .text.USBD_GetStatus:00000000 USBD_GetStatus
+     /tmp/ccZo90TG.s:636    .text.USBD_ClrFeature:00000000 $t
+     /tmp/ccZo90TG.s:641    .text.USBD_ClrFeature:00000000 USBD_ClrFeature
+     /tmp/ccZo90TG.s:669    .text.USBD_StdDevReq:00000000 $t
+     /tmp/ccZo90TG.s:675    .text.USBD_StdDevReq:00000000 USBD_StdDevReq
+     /tmp/ccZo90TG.s:709    .rodata.USBD_StdDevReq:00000000 $d
+     /tmp/ccZo90TG.s:749    .text.USBD_StdDevReq:00000068 $d
+     /tmp/ccZo90TG.s:752    .text.USBD_StdItfReq:00000000 $t
+     /tmp/ccZo90TG.s:758    .text.USBD_StdItfReq:00000000 USBD_StdItfReq
+     /tmp/ccZo90TG.s:815    .text.USBD_StdEPReq:00000000 $t
+     /tmp/ccZo90TG.s:821    .text.USBD_StdEPReq:00000000 USBD_StdEPReq
+     /tmp/ccZo90TG.s:1104   .text.USBD_GetString:00000000 $t
+     /tmp/ccZo90TG.s:1110   .text.USBD_GetString:00000000 USBD_GetString
+     /tmp/ccZo90TG.s:1151   .bss.cfgidx.0:00000000 $d
+
+UNDEFINED SYMBOLS
+USBD_CtlSendStatus
+USBD_LL_StallEP
+USBD_CtlSendData
+USBD_LL_SetUSBAddress
+USBD_ClrClassConfig
+USBD_SetClassConfig
+USBD_LL_ClearStallEP
+USBD_LL_IsStallEP
